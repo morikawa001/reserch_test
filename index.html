@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>臨床研究法分類判定システム</title>
+    <style>
+        :root {
+            --color-primary: #2980b9;
+            --color-primary-light: #3498db;
+            --color-success: #27ae60;
+            --color-warning: #f39c12;
+            --color-danger: #e74c3c;
+            --color-info: #16a085;
+            --color-bg: #f8f9fa;
+            --color-surface: #ffffff;
+            --color-text: #2c3e50;
+            --color-text-light: #7f8c8d;
+            --color-border: #bdc3c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.95;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--color-surface);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            font-size: 20px;
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .help-text {
+            font-size: 12px;
+            color: var(--color-text-light);
+            margin-top: 4px;
+        }
+
+        .question-group {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--color-info);
+        }
+
+        .question-group label {
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-item, .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--color-text);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1e5fa5;
+        }
+
+        button:disabled {
+            background-color: var(--color-text-light);
+            cursor: not-allowed;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-secondary {
+            background-color: var(--color-text-light);
+        }
+
+        .btn-secondary:hover {
+            background-color: #6c7a7d;
+        }
+
+        .result-section {
+            background: var(--color-surface);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .result-icon {
+            font-size: 40px;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .result-text h2 {
+            color: var(--color-primary);
+            margin-bottom: 5px;
+        }
+
+        .classification-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .badge-tokutei {
+            background-color: #ffe6e6;
+            color: var(--color-danger);
+            border: 2px solid var(--color-danger);
+        }
+
+        .badge-doryoku {
+            background-color: #fff3e0;
+            color: var(--color-warning);
+            border: 2px solid var(--color-warning);
+        }
+
+        .badge-kansatsu {
+            background-color: #e8f5e9;
+            color: var(--color-success);
+            border: 2px solid var(--color-success);
+        }
+
+        .badge-hito-shishin {
+            background-color: #e0f2f1;
+            color: var(--color-info);
+            border: 2px solid var(--color-info);
+        }
+
+        .result-details {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--color-info);
+        }
+
+        .result-details h3 {
+            color: var(--color-primary);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .result-details p {
+            margin-bottom: 8px;
+            line-height: 1.8;
+        }
+
+        .documents-section {
+            margin-top: 25px;
+        }
+
+        .documents-section h3 {
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .document-list {
+            background-color: #f9f9f9;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .document-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .document-item:last-child {
+            border-bottom: none;
+        }
+
+        .document-number {
+            background-color: var(--color-primary);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .document-content {
+            flex: 1;
+        }
+
+        .document-content strong {
+            color: var(--color-text);
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .document-content p {
+            font-size: 13px;
+            color: var(--color-text-light);
+            margin: 0;
+        }
+
+        .procedure-section {
+            margin-top: 25px;
+        }
+
+        .procedure-section h3 {
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .procedure-steps {
+            background-color: #f9f9f9;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .step {
+            padding: 15px;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            gap: 15px;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            background-color: var(--color-success);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content strong {
+            color: var(--color-text);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
+            font-size: 13px;
+            color: var(--color-text-light);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .report-section {
+            background: var(--color-surface);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .report-section h2 {
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            font-size: 20px;
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 10px;
+        }
+
+        .report-output {
+            background-color: #f5f5f5;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            color: var(--color-text);
+            max-height: 500px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-export {
+            background-color: var(--color-success);
+            flex: 1;
+            text-align: center;
+        }
+
+        .btn-export:hover {
+            background-color: #229954;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .info-box {
+            background-color: #e8f4f8;
+            border-left: 4px solid var(--color-primary-light);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: var(--color-text);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border-left: 4px solid var(--color-warning);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .warning-box p {
+            margin: 0;
+            color: #856404;
+            font-size: 13px;
+        }
+
+        .flow-chart {
+            background-color: #f0f7ff;
+            border: 1px solid var(--color-info);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .flow-chart p {
+            margin: 8px 0;
+            line-height: 1.7;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            color: var(--color-info);
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        .toggle-group {
+            margin-bottom: 15px;
+        }
+
+        .toggle-btn {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #1e5fa5;
+        }
+
+        .toggle-content {
+            background-color: #f9f9f9;
+            border: 1px solid var(--color-border);
+            border-top: none;
+            padding: 15px;
+            display: none;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .toggle-content.show {
+            display: block;
+        }
+
+        .error-message {
+            background-color: #ffe6e6;
+            color: var(--color-danger);
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--color-danger);
+        }
+
+        .success-message {
+            background-color: #e8f5e9;
+            color: var(--color-success);
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--color-success);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 臨床研究法分類判定システム</h1>
+            <p>研究アイデアを臨床研究法の区分に自動分類し、必要な書類と手順をご案内します</p>
+        </header>
+
+        <div class="main-content">
+            <!-- 入力フォーム -->
+            <div class="card">
+                <h2>📋 研究情報入力</h2>
+
+                <div class="info-box">
+                    <p><strong>ご注意：</strong> このシステムは一般的なガイダンスを提供します。最終的な分類は、所属機関の臨床研究審査委員会(CRB)の判断に従ってください。</p>
+                </div>
+
+                <form id="classificationForm">
+                    <!-- 基本情報 -->
+                    <div class="form-group">
+                        <label for="researchTitle">研究のタイトル</label>
+                        <input type="text" id="researchTitle" name="researchTitle" placeholder="例：肺がん術後患者の生活の質に関する研究" required>
+                        <div class="help-text">研究の概要を簡潔に入力してください</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="researchObjective">研究目的</label>
+                        <textarea id="researchObjective" name="researchObjective" placeholder="例：肺がん患者の術後QOLに影響する要因を明らかにする" required></textarea>
+                        <div class="help-text">研究で明らかにしたいことを説明してください</div>
+                    </div>
+
+                    <!-- 介入の有無 -->
+                    <div class="question-group">
+                        <label>Q1. 研究目的で、通常診療とは異なる介入（検査、投薬、処置など）を行いますか？</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="intervention_yes" name="intervention" value="yes" required>
+                                <label for="intervention_yes">はい（介入を行う）</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="intervention_no" name="intervention" value="no" required>
+                                <label for="intervention_no">いいえ（通常診療のデータのみを使用）</label>
+                            </div>
+                        </div>
+                        <div class="help-text">研究のために、通常の治療を超えた追加の検査や処置を実施予定があるかどうかです</div>
+                    </div>
+
+                    <!-- 医薬品等の使用 -->
+                    <div class="question-group">
+                        <label>Q2. 未承認または適応外の医薬品・医療機器・再生医療等製品を使用しますか？</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="unapproved_yes" name="unapproved" value="yes" required>
+                                <label for="unapproved_yes">はい（未承認・適応外を使用）</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="unapproved_no" name="unapproved" value="no" required>
+                                <label for="unapproved_no">いいえ（承認済み医薬品の承認範囲内で使用）</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="unapproved_na" name="unapproved" value="na" required>
+                                <label for="unapproved_na">医薬品等は使用しない</label>
+                            </div>
+                        </div>
+                        <div class="help-text">医薬品の場合は、承認申請済み医薬品でも承認範囲外の使用は「未承認」扱いです</div>
+                    </div>
+
+                    <!-- 資金提供 -->
+                    <div class="question-group">
+                        <label>Q3. 製薬企業・医療機器企業等の営利企業から資金提供を受けますか？</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="funding_yes" name="funding" value="yes" required>
+                                <label for="funding_yes">はい（企業から資金提供を受ける）</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="funding_no" name="funding" value="no" required>
+                                <label for="funding_no">いいえ（受けない、または公的資金のみ）</label>
+                            </div>
+                        </div>
+                        <div class="help-text">研究に関連する企業（製薬・医療機器メーカーなど）からの資金提供の有無</div>
+                    </div>
+
+                    <!-- 治験かどうか -->
+                    <div class="question-group">
+                        <label>Q4. 医薬品医療機器等法(薬機法)に基づく医薬品・医療機器の承認を目的とした治験ですか？</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="clinical_trial_yes" name="clinicalTrial" value="yes" required>
+                                <label for="clinical_trial_yes">はい（治験）</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="clinical_trial_no" name="clinicalTrial" value="no" required>
+                                <label for="clinical_trial_no">いいえ（治験ではない）</label>
+                            </div>
+                        </div>
+                        <div class="help-text">承認取得を直接目的とした臨床試験の場合は治験に該当します</div>
+                    </div>
+
+                    <!-- 侵襲性 -->
+                    <div class="question-group">
+                        <label>Q5. 研究に伴う侵襲の程度</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="invasiveness_none" name="invasiveness" value="none" required>
+                                <label for="invasiveness_none">侵襲なし（アンケート、既存データのみ）</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="invasiveness_minor" name="invasiveness" value="minor" required>
+                                <label for="invasiveness_minor">軽微な侵襲（採血、簡易検査など）</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="invasiveness_major" name="invasiveness" value="major" required>
+                                <label for="invasiveness_major">侵襲あり（軽微でない）</label>
+                            </div>
+                        </div>
+                        <div class="help-text">穿刺、切開、投薬など、身体又は精神に傷害・負担を与えることを指します</div>
+                    </div>
+
+                    <!-- 被験者数 -->
+                    <div class="form-group">
+                        <label for="participantNumber">予定参加者数（複数サイトの場合は概算総数）</label>
+                        <input type="number" id="participantNumber" name="participantNumber" min="1" placeholder="例：100" required>
+                        <div class="help-text">研究に参加予定の人数をご入力ください</div>
+                    </div>
+
+                    <!-- 多施設共同研究 -->
+                    <div class="question-group">
+                        <label>Q6. 複数の医療機関で実施する多施設共同研究ですか？</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="multicenter_yes" name="multicenter" value="yes" required>
+                                <label for="multicenter_yes">はい（多施設共同研究）</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="multicenter_no" name="multicenter" value="no" required>
+                                <label for="multicenter_no">いいえ（単施設研究）</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 追加情報 -->
+                    <div class="form-group">
+                        <label for="additionalInfo">その他の特記事項（任意）</label>
+                        <textarea id="additionalInfo" name="additionalInfo" placeholder="例：対象患者は小児科患者、高齢者のみ、特別な配慮が必要な集団など"></textarea>
+                        <div class="help-text">分類判定に際して参考になる追加情報があればお入力ください</div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn-primary">判定を実行</button>
+                        <button type="reset" class="btn-secondary">リセット</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 分類結果・ガイダンス -->
+            <div class="card hidden" id="resultsCard">
+                <h2>📊 判定結果</h2>
+                <div id="resultsContent"></div>
+            </div>
+        </div>
+
+        <!-- レポート出力セクション -->
+        <div class="report-section hidden" id="reportSection">
+            <h2>📄 レポート出力</h2>
+            <p style="margin-bottom: 15px; color: var(--color-text-light);">判定結果の詳細レポート（テキスト形式）</p>
+            <div class="report-output" id="reportOutput"></div>
+            <div class="export-buttons">
+                <button onclick="exportReport('txt')" class="btn-export">テキストで保存</button>
+                <button onclick="copyReport()" class="btn-secondary" style="flex: 1;">コピー</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 研究分類ロジック
+        const classificationLogic = {
+            // 特定臨床研究の判定
+            isSpecifiedClinical: function(formData) {
+                // 治験は特定臨床研究に含まれない
+                if (formData.clinicalTrial === 'yes') return false;
+
+                // 条件1: 未承認・適応外医薬品等を使用
+                if (formData.unapproved === 'yes') return true;
+
+                // 条件2: 企業から資金提供を受けて介入研究を実施
+                if (formData.intervention === 'yes' && formData.funding === 'yes') return true;
+
+                return false;
+            },
+
+            // 非特定臨床研究（努力義務）の判定
+            isEffortObligation: function(formData) {
+                // 治験は除外
+                if (formData.clinicalTrial === 'yes') return false;
+
+                // 特定臨床研究に該当しないが...
+                if (this.isSpecifiedClinical(formData)) return false;
+
+                // 医薬品等の介入研究であり、公的資金を使用する場合
+                if (formData.intervention === 'yes' && formData.unapproved !== 'yes' && formData.funding === 'no') {
+                    return true;
+                }
+
+                return false;
+            },
+
+            // 人指針下の観察研究かつ介入ありの判定
+            isObservationWithIntervention: function(formData) {
+                // 医薬品等を使わない侵襲ありの介入研究
+                if (formData.intervention === 'yes' && formData.unapproved === 'na') {
+                    return true;
+                }
+
+                // 承認済み医薬品を承認範囲内で使用しつつ侵襲ありの場合
+                if (formData.intervention === 'yes' && formData.unapproved === 'no' && formData.funding === 'no') {
+                    if (formData.invasiveness !== 'none') {
+                        // 企業資金なしの場合は努力義務でなく観察研究扱いの可能性
+                        return true;
+                    }
+                }
+
+                return false;
+            },
+
+            // 人指針下の観察研究（一般的な観察研究）の判定
+            isSimpleObservation: function(formData) {
+                // 介入がない場合は観察研究
+                if (formData.intervention === 'no') return true;
+
+                return false;
+            }
+        };
+
+        // 必要書類の定義
+        const requiredDocuments = {
+            tokutei: [
+                { name: '実施計画（様式第一）', detail: 'jRCTに入力したものを出力可能' },
+                { name: '研究計画書', detail: '詳細な研究の計画・方法についての文書' },
+                { name: '同意説明文書及び同意書', detail: '研究対象者への説明と同意取得のための文書' },
+                { name: '研究者の略歴及び研究業績', detail: '研究責任医師と研究分担医師全員分' },
+                { name: '医薬品等の概要', detail: '使用する医薬品・医療機器の詳細情報' },
+                { name: '利益相反管理計画書', detail: 'COI（利益相反）状況の確認と管理計画' },
+                { name: '疾病等発生時の手順書', detail: '有害事象発生時の対応手順' },
+                { name: '統計解析計画書', detail: '分析方法や統計手法の事前計画' },
+                { name: '研究補償保険加入証明', detail: '研究参加者への損害賠償保険' },
+                { name: '教育・研修修了証明書', detail: '臨床研究法研修の修了証（全研究者）' }
+            ],
+            doryoku: [
+                { name: '実施計画（様式第一）', detail: 'jRCTに入力したものを出力可能' },
+                { name: '研究計画書', detail: '詳細な研究の計画・方法についての文書' },
+                { name: '同意説明文書及び同意書', detail: '研究対象者への説明と同意取得のための文書' },
+                { name: '研究者の略歴及び研究業績', detail: '研究責任医師と研究分担医師全員分' },
+                { name: '利益相反管理計画書', detail: 'COI（利益相反）状況の確認と管理計画' },
+                { name: '統計解析計画書', detail: '分析方法や統計手法の事前計画（推奨）' },
+                { name: '教育・研修修了証明書', detail: '臨床研究法研修の修了証（全研究者）' }
+            ],
+            observation_intervention: [
+                { name: '研究計画書', detail: '人指針に基づいた研究計画書' },
+                { name: '同意説明文書及び同意書', detail: '研究対象者への説明と同意取得のための文書' },
+                { name: '研究者の略歴及び研究業績', detail: '研究責任者の略歴' },
+                { name: '統計解析計画書', detail: '分析方法や統計手法の事前計画' },
+                { name: 'IRB/倫理委員会の承認申請書', detail: '倫理委員会への申請書類' }
+            ],
+            simple_observation: [
+                { name: '研究計画書', detail: '人指針に基づいた研究計画書' },
+                { name: '同意説明文書及び同意書（必要に応じて）', detail: 'オプトアウト公開の場合もあり' },
+                { name: '研究者の略歴及び研究業績', detail: '研究責任者の略歴' },
+                { name: '倫理委員会への申請書類', detail: '所属機関のIRB/倫理委員会への申請' }
+            ]
+        };
+
+        // 実施手順の定義
+        const procedures = {
+            tokutei: [
+                { step: '事前相談', detail: 'CRB（認定臨床研究審査委員会）に相談し、研究が特定臨床研究に該当するか確認' },
+                { step: '利益相反確認', detail: '所属機関のCOI委員会に利益相反状況を報告し、管理計画を作成' },
+                { step: '書類準備', detail: '必要書類（実施計画、研究計画書、同意説明文書など）を準備' },
+                { step: 'jRCT登録（事前）', detail: 'jRCT（臨床研究等提出・公開システム）に実施計画を入力・登録' },
+                { step: 'CRB審査申請', detail: '準備した書類をCRBに提出し、認定審査委員会での審査を申請' },
+                { step: 'CRB審査', detail: '通常月1回のCRB開催時に科学的・倫理的審査を実施' },
+                { step: '管理者許可申請', detail: 'CRB承認後、実施医療機関の管理者に許可申請' },
+                { step: '管理者許可取得', detail: '医療機関管理者から研究実施の許可を取得' },
+                { step: 'jRCT登録（本登録）', detail: '厚生労働省にjRCTで実施計画を届け出・公開' },
+                { step: '研究開始', detail: '全ての手続き完了後、研究を開始' }
+            ],
+            doryoku: [
+                { step: '事前相談', detail: 'CRBに相談し、研究が非特定臨床研究（努力義務）に該当するか確認' },
+                { step: '利益相反確認', detail: '所属機関のCOI委員会に利益相反状況を報告' },
+                { step: '書類準備', detail: '必要書類（実施計画、研究計画書、同意説明文書など）を準備' },
+                { step: 'jRCT登録（事前）', detail: 'jRCTに実施計画を入力・登録' },
+                { step: 'CRB審査申請', detail: 'CRBに審査を申請' },
+                { step: 'CRB審査', detail: '認定審査委員会での審査' },
+                { step: '管理者許可取得', detail: '医療機関管理者から研究実施の許可を取得' },
+                { step: 'jRCT登録（本登録）', detail: 'jRCTで実施計画を届け出・公開（厚生労働大臣への届出は不要）' },
+                { step: '研究開始', detail: '全ての手続き完了後、研究を開始' }
+            ],
+            observation_intervention: [
+                { step: '事前相談', detail: '所属機関の倫理委員会に相談' },
+                { step: '研究計画策定', detail: '人指針に基づいた研究計画書を作成' },
+                { step: '倫理委員会申請', detail: '倫理委員会に書類を提出' },
+                { step: '倫理委員会審査', detail: '倫理的側面から審査を実施' },
+                { step: '倫理委員会承認取得', detail: '倫理委員会から承認を取得' },
+                { step: '研究開始', detail: '承認後、研究を開始' }
+            ],
+            simple_observation: [
+                { step: '研究分類確認', detail: '研究が簡単な観察研究に該当することを確認' },
+                { step: '倫理委員会相談', detail: '所属機関の倫理委員会に相談（必要に応じて）' },
+                { step: '研究計画策定', detail: '研究計画書を作成（簡潔なもので可）' },
+                { step: '倫理委員会申請（必要に応じて）', detail: '倫理委員会への申請（対象者への侵襲がない場合は不要な場合もあり）' },
+                { step: '同意取得準備', detail: 'オプトアウト公開またはインフォームドコンセント文書の準備' },
+                { step: '研究開始', detail: '倫理的側面の確認完了後、研究を開始' }
+            ]
+        };
+
+        // フォーム送信処理
+        document.getElementById('classificationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // フォームデータ取得
+            const formData = {
+                title: document.getElementById('researchTitle').value,
+                objective: document.getElementById('researchObjective').value,
+                intervention: document.querySelector('input[name="intervention"]:checked').value,
+                unapproved: document.querySelector('input[name="unapproved"]:checked').value,
+                funding: document.querySelector('input[name="funding"]:checked').value,
+                clinicalTrial: document.querySelector('input[name="clinicalTrial"]:checked').value,
+                invasiveness: document.querySelector('input[name="invasiveness"]:checked').value,
+                participantNumber: document.getElementById('participantNumber').value,
+                multicenter: document.querySelector('input[name="multicenter"]:checked').value,
+                additionalInfo: document.getElementById('additionalInfo').value
+            };
+
+            // 分類判定
+            let classification = '';
+            let classificationEng = '';
+            let badge = '';
+            let explanation = '';
+            let docs = [];
+            let procs = [];
+
+            if (formData.clinicalTrial === 'yes') {
+                classification = '治験（医薬品医療機器等法に基づく臨床試験）';
+                classificationEng = 'clinical_trial';
+                badge = '治験';
+                explanation = '医薬品医療機器等法(薬機法)に基づく医薬品・医療機器の承認を目的とした臨床試験は「治験」に該当します。治験は臨床研究法の対象外ですが、極めて厳格な基準と手続きが定められており、医療機関の治験担当部署と協力して実施してください。';
+                docs = [];
+                procs = [];
+            } else if (classificationLogic.isSpecifiedClinical(formData)) {
+                classification = '特定臨床研究（臨床研究法の遵守義務対象）';
+                classificationEng = 'tokutei';
+                badge = '特定臨床研究';
+                explanation = '未承認・適応外の医薬品等を使用する、または企業資金を受けて介入研究を実施する場合が該当します。実施計画の厚生労働大臣への届出が必須であり、認定臨床研究審査委員会の審査と医療機関管理者の許可が必要です。最も厳格な基準が適用されます。';
+                docs = requiredDocuments.tokutei;
+                procs = procedures.tokutei;
+            } else if (classificationLogic.isEffortObligation(formData)) {
+                classification = '非特定臨床研究（努力義務研究）';
+                classificationEng = 'doryoku';
+                badge = '非特定臨床研究';
+                explanation = '公的資金のみを用いた承認済み医薬品の介入研究がこれに該当します。臨床研究法では遵守義務ではなく努力義務とされていますが、認定臨床研究審査委員会の審査が推奨されます。特定臨床研究に準じた取り扱いが求められます。';
+                docs = requiredDocuments.doryoku;
+                procs = procedures.doryoku;
+            } else if (classificationLogic.isObservationWithIntervention(formData)) {
+                classification = '人指針下の観察研究（侵襲あり）';
+                classificationEng = 'observation_intervention';
+                badge = '観察研究（侵襲あり）';
+                explanation = '医薬品等を使わない研究でも、侵襲を伴う場合は「人を対象とする生命科学・医学系研究に関する倫理指針（人指針）」の対象となります。所属機関の倫理委員会(IRB)への申請・承認が必要です。';
+                docs = requiredDocuments.observation_intervention;
+                procs = procedures.observation_intervention;
+            } else if (classificationLogic.isSimpleObservation(formData)) {
+                classification = '人指針下の観察研究（侵襲なし）';
+                classificationEng = 'simple_observation';
+                badge = '観察研究（侵襲なし）';
+                explanation = '介入を伴わない観察研究です。既存データの利用やアンケート調査が主な対象です。倫理委員会への申請が不要な場合もありますが、対象者への負担や個人情報保護の観点から、所属機関の倫理委員会に相談することをお勧めします。';
+                docs = requiredDocuments.simple_observation;
+                procs = procedures.simple_observation;
+            }
+
+            // 結果を表示
+            displayResults(formData, classification, classificationEng, badge, explanation, docs, procs);
+
+            // レポートを生成
+            generateReport(formData, classification, classificationEng, docs, procs);
+
+            // スムーズにスクロール
+            document.getElementById('resultsCard').classList.remove('hidden');
+            document.getElementById('reportSection').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        });
+
+        function displayResults(formData, classification, classificationEng, badge, explanation, docs, procs) {
+            const resultsCard = document.getElementById('resultsCard');
+            const resultsContent = document.getElementById('resultsContent');
+
+            let badgeClass = 'badge-tokutei';
+            if (classificationEng === 'doryoku') badgeClass = 'badge-doryoku';
+            else if (classificationEng === 'observation_intervention' || classificationEng === 'simple_observation') badgeClass = 'badge-kansatsu';
+
+            let html = `
+                <div class="result-header">
+                    <div class="result-icon">📌</div>
+                    <div class="result-text">
+                        <h2>判定結果</h2>
+                        <span class="classification-badge ${badgeClass}">${badge}</span>
+                    </div>
+                </div>
+
+                <div class="result-details">
+                    <h3>区分の説明</h3>
+                    <p>${explanation}</p>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>重要：</strong> この判定は一般的なガイダンスです。最終的な分類は、所属機関の臨床研究審査委員会または倫理委員会が行う正式な審査に従ってください。</p>
+                </div>
+            `;
+
+            // 入力内容のサマリー
+            html += `
+                <div style="margin-top: 20px; background-color: #f5f5f5; padding: 15px; border-radius: 6px;">
+                    <h3 style="color: var(--color-primary); margin-bottom: 12px;">入力内容のサマリー</h3>
+                    <table style="width: 100%; font-size: 13px;">
+                        <tr style="border-bottom: 1px solid var(--color-border);">
+                            <td style="padding: 8px; font-weight: 600; width: 40%;">研究タイトル</td>
+                            <td style="padding: 8px;">${escapeHtml(formData.title)}</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--color-border);">
+                            <td style="padding: 8px; font-weight: 600;">介入の有無</td>
+                            <td style="padding: 8px;">${formData.intervention === 'yes' ? '介入あり' : '介入なし'}</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--color-border);">
+                            <td style="padding: 8px; font-weight: 600;">未承認・適応外医薬品等</td>
+                            <td style="padding: 8px;">${formData.unapproved === 'yes' ? '使用予定' : (formData.unapproved === 'no' ? '使用しない' : '使用しない')}</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--color-border);">
+                            <td style="padding: 8px; font-weight: 600;">企業資金</td>
+                            <td style="padding: 8px;">${formData.funding === 'yes' ? '受ける' : '受けない'}</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--color-border);">
+                            <td style="padding: 8px; font-weight: 600;">治験</td>
+                            <td style="padding: 8px;">${formData.clinicalTrial === 'yes' ? 'はい' : 'いいえ'}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; font-weight: 600;">参加者数</td>
+                            <td style="padding: 8px;">${formData.participantNumber}名</td>
+                        </tr>
+                    </table>
+                </div>
+            `;
+
+            // 必要書類セクション
+            if (docs.length > 0) {
+                html += `
+                    <div class="documents-section">
+                        <h3>📋 必要な書類（${docs.length}点）</h3>
+                        <div class="document-list">
+                `;
+
+                docs.forEach((doc, index) => {
+                    html += `
+                        <div class="document-item">
+                            <div class="document-number">${index + 1}</div>
+                            <div class="document-content">
+                                <strong>${escapeHtml(doc.name)}</strong>
+                                <p>${escapeHtml(doc.detail)}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 実施手順セクション
+            if (procs.length > 0) {
+                html += `
+                    <div class="procedure-section">
+                        <h3>🔧 実施手順（${procs.length}ステップ）</h3>
+                        <div class="procedure-steps">
+                `;
+
+                procs.forEach((proc, index) => {
+                    html += `
+                        <div class="step">
+                            <div class="step-number">${index + 1}</div>
+                            <div class="step-content">
+                                <strong>${escapeHtml(proc.step)}</strong>
+                                <p>${escapeHtml(proc.detail)}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            }
+
+            resultsContent.innerHTML = html;
+        }
+
+        function generateReport(formData, classification, classificationEng, docs, procs) {
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('ja-JP') + ' ' + now.toLocaleTimeString('ja-JP');
+
+            let report = `========================================
+臨床研究法分類判定レポート
+========================================
+
+【実行日時】
+${dateStr}
+
+【注意事項】
+このレポートは一般的なガイダンスを提供するものです。
+最終的な研究分類と必要手続きは、所属機関の
+臨床研究審査委員会(CRB)または倫理委員会が
+正式に判断してください。
+
+========================================
+【判定結果】
+========================================
+
+研究タイトル: ${formData.title}
+
+分類: ${classification}
+
+========================================
+【研究特性】
+========================================
+
+研究目的:
+${formData.objective}
+
+介入の有無: ${formData.intervention === 'yes' ? '介入を伴う' : '介入を伴わない'}
+
+未承認・適応外医薬品等の使用: ${formData.unapproved === 'yes' ? 'はい（使用予定）' : (formData.unapproved === 'no' ? 'いいえ（承認済みのみ）' : 'いいえ（医薬品等を使用しない）')}
+
+企業からの資金提供: ${formData.funding === 'yes' ? 'はい' : 'いいえ'}
+
+治験かどうか: ${formData.clinicalTrial === 'yes' ? 'はい（治験）' : 'いいえ'}
+
+侵襲の程度: ${formData.invasiveness === 'none' ? '侵襲なし' : (formData.invasiveness === 'minor' ? '軽微な侵襲' : '侵襲あり')}
+
+予定参加者数: ${formData.participantNumber}名
+
+多施設共同研究: ${formData.multicenter === 'yes' ? 'はい' : 'いいえ'}
+
+`;
+
+            if (formData.additionalInfo) {
+                report += `
+追加情報:
+${formData.additionalInfo}
+
+`;
+            }
+
+            report += `
+========================================
+【分類根拠】
+========================================
+
+`;
+
+            if (classificationEng === 'tokutei') {
+                report += `特定臨床研究に該当する理由:
+
+臨床研究法第2条第2項により、以下のいずれかに
+該当する介入を伴う臨床研究は「特定臨床研究」
+に分類されます:
+
+1. 未承認または適応外の医薬品等を用いた臨床研究
+2. 医薬品等の製造販売業者等から資金の提供を受けて
+   実施される臨床研究
+
+この研究は上記の基準に合致しています。
+
+特定臨床研究は以下の義務が課されます:
+・認定臨床研究審査委員会での科学的・倫理的審査
+・実施計画の厚生労働大臣への届出
+・医療機関管理者の許可取得
+・jRCT（臨床研究等提出・公開システム）への登録
+
+`;
+            } else if (classificationEng === 'doryoku') {
+                report += `非特定臨床研究（努力義務）に該当する理由:
+
+臨床研究法の特定臨床研究に該当しない医薬品等
+の臨床研究のうち、介入を伴う場合は努力義務の
+対象となります。
+
+本研究は以下の特性により努力義務の対象です:
+・介入を伴う臨床研究である
+・承認済み医薬品の承認範囲内で使用される
+・公的資金またはメディカルライター賞等を用いている
+
+努力義務:
+・認定臨床研究審査委員会での審査が推奨される
+・特定臨床研究に準じた管理が求められる
+・厚生労働大臣への届出は不要（jRCT登録は推奨）
+
+`;
+            } else if (classificationEng === 'observation_intervention') {
+                report += `人指針下の観察研究（侵襲あり）に該当する理由:
+
+臨床研究法の対象外ですが、「人を対象とする
+生命科学・医学系研究に関する倫理指針（人指針）」
+の対象となります。
+
+本研究は以下の特性により該当します:
+・医薬品等を使用しない（または使用のみで実験的)
+・侵襲を伴う（検査、採血など）
+・研究目的で新たに試料・情報を取得する
+
+必要手続き:
+・所属機関の倫理委員会(IRB)への申請
+・倫理委員会の承認取得
+・対象者への説明と同意取得
+
+`;
+            } else if (classificationEng === 'simple_observation') {
+                report += `人指針下の観察研究（侵襲なし）に該当する理由:
+
+介入を伴わない観察研究です。既存データの利用や
+アンケート調査により、新しい知見を得る研究です。
+
+本研究は以下の特性により該当します:
+・介入を伴わない
+・通常診療のデータを使用
+・アンケートなどの侵襲のない情報取得
+
+必要手続き:
+・倫理委員会への相談（推奨）
+・適切な同意取得またはオプトアウト公開
+・個人情報保護への対応
+
+`;
+            }
+
+            report += `
+========================================
+【必要な書類一覧】
+========================================
+
+`;
+
+            if (docs.length > 0) {
+                docs.forEach((doc, index) => {
+                    report += `${index + 1}. ${doc.name}
+   詳細: ${doc.detail}
+
+`;
+                });
+            } else {
+                report += `この研究分類では特別な書類提出は不要ですが、
+所属機関の規程に従ってください。
+
+`;
+            }
+
+            report += `
+========================================
+【実施手順】
+========================================
+
+`;
+
+            if (procs.length > 0) {
+                procs.forEach((proc, index) => {
+                    report += `ステップ${index + 1}: ${proc.step}
+  ${proc.detail}
+
+`;
+                });
+            }
+
+            report += `
+========================================
+【重要な連絡先・相談先】
+========================================
+
+所属機関の臨床研究审查委员会(CRB):
+  - 特定臨床研究に関する相談
+  - 非特定臨床研究（努力義務）に関する相談
+
+所属機関の倫理委員会(IRB):
+  - 人指針下の研究に関する相談
+
+所属機関の利益相反(COI)委員会:
+  - 利益相反管理に関する相談
+
+========================================
+【参考資料】
+
+・臨床研究法
+  https://www.mhlw.go.jp/
+
+・厚生労働省臨床研究法情報
+  https://www.mhlw.go.jp/stfshingi/newpage_00023.html
+
+・jRCT（臨床研究等提出・公開システム）
+  https://jrct.niph.go.jp/
+
+・人を対象とする生命科学・医学系研究に関する倫理指針
+  https://www.mext.go.jp/
+
+========================================
+
+本レポートは自動生成されたものです。
+最終的な判断は所属機関の正式な審査に
+従ってください。
+
+========================================
+`;
+
+            document.getElementById('reportOutput').textContent = report;
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        function exportReport(format) {
+            const report = document.getElementById('reportOutput').textContent;
+            const element = document.createElement('a');
+            const file = new Blob([report], { type: 'text/plain;charset=utf-8' });
+            element.href = URL.createObjectURL(file);
+            element.download = '臨床研究法判定レポート_' + new Date().toLocaleDateString('ja-JP').replace(/\//g, '') + '.txt';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        function copyReport() {
+            const report = document.getElementById('reportOutput').textContent;
+            navigator.clipboard.writeText(report).then(() => {
+                alert('レポートをクリップボードにコピーしました');
+            }).catch(err => {
+                alert('コピーに失敗しました: ' + err);
+            });
+        }
+
+        // 初期表示時にヘルプを表示
+        window.addEventListener('load', () => {
+            console.log('臨床研究法分類判定システムが読み込まれました');
+        });
+    </script>
+</body>
+</html>
