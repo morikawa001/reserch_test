@@ -6,13 +6,16 @@
     <title>臨床研究法分類判定システム</title>
     <style>
         :root {
-            --color-primary: #2980b9;
-            --color-primary-light: #3498db;
-            --color-success: #27ae60;
-            --color-warning: #f39c12;
-            --color-danger: #e74c3c;
-            --color-info: #16a085;
-            --color-bg: #f8f9fa;
+            /* グリーンベースの配色に変更 */
+            --color-primary: #2E7D32;       /* メイン：信頼感のある深緑 */
+            --color-primary-light: #66BB6A; /* アクセント：明るい緑 */
+            
+            --color-success: #27ae60;       /* 成功・安全（変更なし） */
+            --color-warning: #f39c12;       /* 注意（変更なし） */
+            --color-danger: #e74c3c;        /* 危険（変更なし） */
+            --color-info: #00897B;          /* 情報：青緑系に変更して統一感アップ */
+            
+            --color-bg: #f4f8f5;            /* 背景：ごく薄い緑を含んだグレー */
             --color-surface: #ffffff;
             --color-text: #2c3e50;
             --color-text-light: #7f8c8d;
@@ -39,6 +42,7 @@
         }
 
         header {
+            /* グラデーションを緑系に */
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
             color: white;
             padding: 40px 20px;
@@ -74,14 +78,14 @@
             background: var(--color-surface);
             border-radius: 8px;
             padding: 25px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* 影を少し柔らかく */
         }
 
         .card h2 {
             color: var(--color-primary);
             margin-bottom: 20px;
             font-size: 20px;
-            border-bottom: 2px solid var(--color-primary);
+            border-bottom: 2px solid var(--color-primary-light); /* 線を少し明るく */
             padding-bottom: 10px;
         }
 
@@ -103,11 +107,11 @@
         }
 
         .question-group {
-            background-color: #f0f7ff;
+            background-color: #f1f8e9; /* 薄い緑の背景に変更 */
             padding: 15px;
             border-radius: 6px;
             margin-bottom: 15px;
-            border-left: 4px solid var(--color-info);
+            border-left: 4px solid var(--color-primary); /* アクセントをPrimaryに */
         }
 
         .question-group label {
@@ -133,6 +137,7 @@
             cursor: pointer;
             width: 18px;
             height: 18px;
+            accent-color: var(--color-primary); /* ラジオボタンの選択色を緑に */
         }
 
         input[type="text"],
@@ -145,6 +150,14 @@
             font-family: inherit;
             font-size: 14px;
             color: var(--color-text);
+        }
+
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
         }
 
         textarea {
@@ -165,7 +178,7 @@
         }
 
         button:hover {
-            background-color: #1e5fa5;
+            background-color: #1b5e20; /* ホバー色を濃い緑に */
         }
 
         button:disabled {
@@ -247,11 +260,11 @@
         }
 
         .result-details {
-            background-color: #f0f7ff;
+            background-color: #e8f5e9; /* 薄い緑 */
             padding: 20px;
             border-radius: 6px;
             margin-bottom: 20px;
-            border-left: 4px solid var(--color-info);
+            border-left: 4px solid var(--color-primary);
         }
 
         .result-details h3 {
@@ -436,7 +449,7 @@
         }
 
         .info-box {
-            background-color: #e8f4f8;
+            background-color: #e8f5e9; /* 薄い緑に変更 */
             border-left: 4px solid var(--color-primary-light);
             padding: 15px;
             border-radius: 4px;
@@ -503,7 +516,7 @@
         }
 
         .toggle-btn:hover {
-            background-color: #1e5fa5;
+            background-color: #1b5e20;
         }
 
         .toggle-content {
@@ -527,7 +540,7 @@
             margin-bottom: 15px;
             border-left: 4px solid var(--color-danger);
         }
-
+        
         .success-message {
             background-color: #e8f5e9;
             color: var(--color-success);
