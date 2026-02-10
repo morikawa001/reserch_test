@@ -1003,29 +1003,30 @@
             `;
 
             // 必要書類セクション
-            if (docs.length > 0) {
-                html += `
-                    <div class="documents-section">
-                        <h3>📋 必要な書類（${docs.length}点）</h3>
-                        <div class="document-list">
-                `;
-
+                      if (docs.length > 0) {
+                html += `<div class="documents-section">
+                    <h3>必要な書類 (${docs.length}点)</h3>
+                    <div class="document-list">`;
+                
                 docs.forEach((doc, index) => {
+                    // 書類名が「研究計画書」の場合のみリンクにする処理
+                    let docNameContent = escapeHtml(doc.name);
+                    if (doc.name === '研究計画書') {
+                        docNameContent = `<a href="https://www.scchr.jp/clinicaltrial/organization/office_management/procedures.html" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline;">${escapeHtml(doc.name)}</a>`;
+                    }
+
                     html += `
                         <div class="document-item">
                             <div class="document-number">${index + 1}</div>
                             <div class="document-content">
-                                <strong>${escapeHtml(doc.name)}</strong>
+                                <strong>${docNameContent}</strong>
                                 <p>${escapeHtml(doc.detail)}</p>
                             </div>
                         </div>
                     `;
                 });
-
-                html += `
-                        </div>
-                    </div>
-                `;
+                
+                html += `</div></div>`;
             }
 
             // 実施手順セクション
