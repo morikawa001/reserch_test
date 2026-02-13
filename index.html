@@ -683,7 +683,7 @@
     <div class="container">
         <div class="header">
             <h1>🔬 臨床研究 総合ツール</h1>
-            <p>症例数計算と研究分類判定をワンストップで実施</p>
+            <p>研究分類判定と症例数計算をワンストップで実施</p>
         </div>
 
         <div class="tabs-wrapper">
@@ -1502,7 +1502,9 @@
 
             if (docs.length > 0) {
                 html += `<div class="documents-section">
-                    <h3>必要な書類 (${docs.length}点)</h3>
+                    <h3 style="cursor: pointer; color: #0066cc; text-decoration: underline;" 
+                    onclick="window.open('https://www.scchr.jp/clinicaltrial/organization/office_management/procedures.html', '_blank')">
+                    必要な書類 (${docs.length}点)</h3>
                     <div class="document-list">`;
                 
                 docs.forEach((doc, index) => {
