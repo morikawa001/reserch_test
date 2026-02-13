@@ -692,7 +692,143 @@
         </div>
 
         <div class="content-wrapper">
-            <!-- Tab 2: 症例数計算ツール -->
+            <!-- Tab 1: 研究分類判定システム -->
+            <div id="tab-classification" class="tab-content" style="animation: none;">
+                <div class="layout">
+                    <div class="section">
+                        <h2>📋 研究情報入力</h2>
+                        <div class="info-box">
+                            <p><strong>ご注意：</strong> このシステムは一般的なガイダンスを提供します。最終的な分類は、所属機関の臨床研究審査委員会(CRB)の判断に従ってください。</p>
+                        </div>
+                        <form id="classificationForm">
+                            <div class="form-group">
+                                <label for="researchTitle">研究のタイトル</label>
+                                <input type="text" id="researchTitle" placeholder="例：肺がん術後患者の生活の質に関する研究" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="researchObjective">研究目的</label>
+                                <textarea id="researchObjective" placeholder="例：肺がん患者の術後QOLに影響する要因を明らかにする" required></textarea>
+                            </div>
+                            <div class="question-group">
+                                <label>Q1. 研究目的で、通常診療とは異なる介入を行いますか？</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="intervention_yes" name="intervention" value="yes" required>
+                                        <label for="intervention_yes">はい（介入を行う）</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="intervention_no" name="intervention" value="no" required>
+                                        <label for="intervention_no">いいえ（通常診療のデータのみ）</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question-group">
+                                <label>Q2. 未承認または適応外の医薬品・医療機器を使用しますか？</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="unapproved_yes" name="unapproved" value="yes" required>
+                                        <label for="unapproved_yes">はい（未承認・適応外を使用）</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="unapproved_no" name="unapproved" value="no" required>
+                                        <label for="unapproved_no">いいえ（承認済みのみ）</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="unapproved_na" name="unapproved" value="na" required>
+                                        <label for="unapproved_na">医薬品等は使用しない</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question-group">
+                                <label>Q3. 企業からの資金提供を受けますか？</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="funding_yes" name="funding" value="yes" required>
+                                        <label for="funding_yes">はい（企業から資金提供）</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="funding_no" name="funding" value="no" required>
+                                        <label for="funding_no">いいえ（受けない、または公的資金のみ）</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question-group">
+                                <label>Q4. 医薬品医療機器等法に基づく治験ですか？</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="clinical_trial_yes" name="clinicalTrial" value="yes" required>
+                                        <label for="clinical_trial_yes">はい（治験）</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="clinical_trial_no" name="clinicalTrial" value="no" required>
+                                        <label for="clinical_trial_no">いいえ（治験ではない）</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question-group">
+                                <label>Q5. 研究に伴う侵襲の程度</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="invasiveness_none" name="invasiveness" value="none" required>
+                                        <label for="invasiveness_none">侵襲なし（アンケート、既存データのみ）</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="invasiveness_minor" name="invasiveness" value="minor" required>
+                                        <label for="invasiveness_minor">軽微な侵襲（採血など）</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="invasiveness_major" name="invasiveness" value="major" required>
+                                        <label for="invasiveness_major">侵襲あり（軽微でない）</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="participantNumber">予定参加者数</label>
+                                <input type="number" id="participantNumber" min="1" placeholder="例：100" required>
+                            </div>
+                            <div class="question-group">
+                                <label>Q6. 多施設共同研究ですか？</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="multicenter_yes" name="multicenter" value="yes" required>
+                                        <label for="multicenter_yes">はい（多施設共同研究）</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="multicenter_no" name="multicenter" value="no" required>
+                                        <label for="multicenter_no">いいえ（単施設研究）</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="additionalInfo">その他の特記事項（任意）</label>
+                                <textarea id="additionalInfo" placeholder="例：対象患者は小児科患者、高齢者のみなど"></textarea>
+                            </div>
+                            <div class="button-group">
+                                <button type="submit" class="btn btn-primary">判定を実行</button>
+                                <button type="reset" class="btn btn-secondary">リセット</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="section hidden" id="resultsCard">
+                        <h2>📊 判定結果</h2>
+                        <div id="resultsContent"></div>
+                    </div>
+                </div>
+
+                <div class="report-section hidden" id="reportSection">
+                    <h2>📄 レポート出力</h2>
+                    <p style="margin-bottom: 15px; color: var(--color-text-secondary);">判定結果の詳細レポート（テキスト形式）</p>
+                    <div class="report-output" id="reportOutput"></div>
+                    <div class="export-buttons">
+                        <button onclick="exportReport('txt')" class="btn-export">テキストで保存</button>
+                        <button onclick="copyReport()" class="btn btn-secondary" style="flex: 1;">コピー</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <!-- Tab 2: 症例数計算ツール -->
             <div id="tab-calculator" class="tab-content active">
                 <div style="margin-bottom: 20px;">
                     <div style="display: flex; gap: 5px; margin-bottom: 20px; border-bottom: 2px solid var(--color-border); overflow-x: auto; padding-bottom: 0;">
@@ -1001,144 +1137,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Tab 1: 研究分類判定システム -->
-            <div id="tab-classification" class="tab-content" style="animation: none;">
-                <div class="layout">
-                    <div class="section">
-                        <h2>📋 研究情報入力</h2>
-                        <div class="info-box">
-                            <p><strong>ご注意：</strong> このシステムは一般的なガイダンスを提供します。最終的な分類は、所属機関の臨床研究審査委員会(CRB)の判断に従ってください。</p>
-                        </div>
-                        <form id="classificationForm">
-                            <div class="form-group">
-                                <label for="researchTitle">研究のタイトル</label>
-                                <input type="text" id="researchTitle" placeholder="例：肺がん術後患者の生活の質に関する研究" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="researchObjective">研究目的</label>
-                                <textarea id="researchObjective" placeholder="例：肺がん患者の術後QOLに影響する要因を明らかにする" required></textarea>
-                            </div>
-                            <div class="question-group">
-                                <label>Q1. 研究目的で、通常診療とは異なる介入を行いますか？</label>
-                                <div class="radio-group">
-                                    <div class="radio-item">
-                                        <input type="radio" id="intervention_yes" name="intervention" value="yes" required>
-                                        <label for="intervention_yes">はい（介入を行う）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="intervention_no" name="intervention" value="no" required>
-                                        <label for="intervention_no">いいえ（通常診療のデータのみ）</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-group">
-                                <label>Q2. 未承認または適応外の医薬品・医療機器を使用しますか？</label>
-                                <div class="radio-group">
-                                    <div class="radio-item">
-                                        <input type="radio" id="unapproved_yes" name="unapproved" value="yes" required>
-                                        <label for="unapproved_yes">はい（未承認・適応外を使用）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="unapproved_no" name="unapproved" value="no" required>
-                                        <label for="unapproved_no">いいえ（承認済みのみ）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="unapproved_na" name="unapproved" value="na" required>
-                                        <label for="unapproved_na">医薬品等は使用しない</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-group">
-                                <label>Q3. 企業からの資金提供を受けますか？</label>
-                                <div class="radio-group">
-                                    <div class="radio-item">
-                                        <input type="radio" id="funding_yes" name="funding" value="yes" required>
-                                        <label for="funding_yes">はい（企業から資金提供）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="funding_no" name="funding" value="no" required>
-                                        <label for="funding_no">いいえ（受けない、または公的資金のみ）</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-group">
-                                <label>Q4. 医薬品医療機器等法に基づく治験ですか？</label>
-                                <div class="radio-group">
-                                    <div class="radio-item">
-                                        <input type="radio" id="clinical_trial_yes" name="clinicalTrial" value="yes" required>
-                                        <label for="clinical_trial_yes">はい（治験）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="clinical_trial_no" name="clinicalTrial" value="no" required>
-                                        <label for="clinical_trial_no">いいえ（治験ではない）</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-group">
-                                <label>Q5. 研究に伴う侵襲の程度</label>
-                                <div class="radio-group">
-                                    <div class="radio-item">
-                                        <input type="radio" id="invasiveness_none" name="invasiveness" value="none" required>
-                                        <label for="invasiveness_none">侵襲なし（アンケート、既存データのみ）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="invasiveness_minor" name="invasiveness" value="minor" required>
-                                        <label for="invasiveness_minor">軽微な侵襲（採血など）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="invasiveness_major" name="invasiveness" value="major" required>
-                                        <label for="invasiveness_major">侵襲あり（軽微でない）</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="participantNumber">予定参加者数</label>
-                                <input type="number" id="participantNumber" min="1" placeholder="例：100" required>
-                            </div>
-                            <div class="question-group">
-                                <label>Q6. 多施設共同研究ですか？</label>
-                                <div class="radio-group">
-                                    <div class="radio-item">
-                                        <input type="radio" id="multicenter_yes" name="multicenter" value="yes" required>
-                                        <label for="multicenter_yes">はい（多施設共同研究）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="multicenter_no" name="multicenter" value="no" required>
-                                        <label for="multicenter_no">いいえ（単施設研究）</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="additionalInfo">その他の特記事項（任意）</label>
-                                <textarea id="additionalInfo" placeholder="例：対象患者は小児科患者、高齢者のみなど"></textarea>
-                            </div>
-                            <div class="button-group">
-                                <button type="submit" class="btn btn-primary">判定を実行</button>
-                                <button type="reset" class="btn btn-secondary">リセット</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="section hidden" id="resultsCard">
-                        <h2>📊 判定結果</h2>
-                        <div id="resultsContent"></div>
-                    </div>
-                </div>
-
-                <div class="report-section hidden" id="reportSection">
-                    <h2>📄 レポート出力</h2>
-                    <p style="margin-bottom: 15px; color: var(--color-text-secondary);">判定結果の詳細レポート（テキスト形式）</p>
-                    <div class="report-output" id="reportOutput"></div>
-                    <div class="export-buttons">
-                        <button onclick="exportReport('txt')" class="btn-export">テキストで保存</button>
-                        <button onclick="copyReport()" class="btn btn-secondary" style="flex: 1;">コピー</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
         // Tab switching function
         function switchTab(tabId) {
