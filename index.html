@@ -18,13 +18,7 @@
             --color-warning: #f39c12;
             --color-info: #00897B;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif;
             background-color: var(--color-bg);
@@ -32,1551 +26,923 @@
             line-height: 1.6;
             padding: 20px;
         }
-
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1200px; margin: 0 auto;
             background-color: var(--color-surface);
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            padding: 0;
-            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 0; overflow: hidden;
         }
-
         .header {
             text-align: center;
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            color: white;
-            padding: 30px 20px;
+            color: white; padding: 30px 20px;
             border-bottom: 2px solid var(--color-primary-light);
         }
-
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 14px;
-        }
-
-        /* タブシステム */
+        .header h1 { font-size: 28px; margin-bottom: 10px; }
+        .header p { color: rgba(255,255,255,0.9); font-size: 14px; }
         .tabs-wrapper {
-            display: flex;
-            background-color: #f9f9f9;
-            border-bottom: 2px solid var(--color-border);
-            overflow-x: auto;
+            display: flex; background-color: #f9f9f9;
+            border-bottom: 2px solid var(--color-border); overflow-x: auto;
         }
-
         .tab-btn {
-            padding: 15px 25px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--color-text-secondary);
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s;
-            white-space: nowrap;
-            margin-bottom: -2px;
+            padding: 15px 25px; background: none; border: none; cursor: pointer;
+            font-size: 15px; font-weight: 600; color: var(--color-text-secondary);
+            border-bottom: 3px solid transparent; transition: all 0.3s;
+            white-space: nowrap; margin-bottom: -2px;
         }
-
-        .tab-btn:hover {
-            color: var(--color-primary-light);
-            background-color: rgba(46, 125, 50, 0.05);
-        }
-
-        .tab-btn.active {
-            color: var(--color-primary);
-            border-bottom-color: var(--color-primary);
-            background-color: white;
-        }
-
-        .content-wrapper {
-            padding: 30px;
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-
+        .tab-btn:hover { color: var(--color-primary-light); background-color: rgba(46,125,50,0.05); }
+        .tab-btn.active { color: var(--color-primary); border-bottom-color: var(--color-primary); background-color: white; }
+        .content-wrapper { padding: 30px; }
+        .tab-content { display: none; animation: fadeIn 0.3s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 20px; }
         .section {
-            background-color: var(--color-surface);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--color-border);
+            background-color: var(--color-surface); padding: 20px;
+            border-radius: 8px; border: 1px solid var(--color-border);
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-
         .section h2 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: var(--color-primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-left: 4px solid var(--color-primary);
-            padding-left: 10px;
+            font-size: 18px; margin-bottom: 15px; color: var(--color-primary);
+            display: flex; align-items: center; gap: 8px;
+            border-left: 4px solid var(--color-primary); padding-left: 10px;
         }
-
-        .form-group {
-            margin-bottom: 16px;
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--color-text); }
+        .form-group .description { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px; font-weight: normal; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 10px 12px; border: 1px solid var(--color-border);
+            border-radius: 6px; font-size: 14px; background-color: white;
+            color: var(--color-text); transition: border-color 0.3s, box-shadow 0.3s; font-family: inherit;
         }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: var(--color-text);
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(46,125,50,0.15);
         }
-
-        .form-group .description {
-            font-size: 12px;
-            color: var(--color-text-secondary);
-            margin-bottom: 4px;
-            font-weight: normal;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            font-size: 14px;
-            background-color: white;
-            color: var(--color-text);
-            transition: border-color 0.3s, box-shadow 0.3s;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
+        textarea { resize: vertical; min-height: 80px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .question-group {
-            background-color: #f1f8e9;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--color-primary);
+            background-color: #f1f8e9; padding: 15px; border-radius: 6px;
+            margin-bottom: 15px; border-left: 4px solid var(--color-primary);
         }
-
-        .question-group label {
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--color-text);
-            display: block;
+        .question-group label { margin-bottom: 10px; font-weight: 600; color: var(--color-text); display: block; }
+        .radio-group, .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-item, .checkbox-item { display: flex; align-items: center; }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px; cursor: pointer; width: 18px; height: 18px; accent-color: var(--color-primary);
         }
-
-        .radio-group, .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .radio-item, .checkbox-item {
-            display: flex;
-            align-items: center;
-        }
-
-        input[type="radio"],
-        input[type="checkbox"] {
-            margin-right: 10px;
-            cursor: pointer;
-            width: 18px;
-            height: 18px;
-            accent-color: var(--color-primary);
-        }
-
-        .slider-container {
-            margin-top: 8px;
-        }
-
+        .slider-container { margin-top: 8px; }
         .slider-container input[type="range"] {
-            width: 100%;
-            height: 6px;
-            border-radius: 3px;
+            width: 100%; height: 6px; border-radius: 3px;
             background: linear-gradient(to right, #e2e8f0 0%, #2E7D32 50%, #e2e8f0 100%);
-            outline: none;
-            -webkit-appearance: none;
+            outline: none; -webkit-appearance: none;
         }
-
         .slider-container input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--color-primary);
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            transition: background 0.2s;
+            -webkit-appearance: none; appearance: none; width: 18px; height: 18px;
+            border-radius: 50%; background: var(--color-primary); cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: background 0.2s;
         }
-
-        .slider-container input[type="range"]::-webkit-slider-thumb:hover {
-            background: var(--color-primary-hover);
-        }
-
+        .slider-container input[type="range"]::-webkit-slider-thumb:hover { background: var(--color-primary-hover); }
         .slider-container input[type="range"]::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--color-primary);
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            width: 18px; height: 18px; border-radius: 50%; background: var(--color-primary);
+            cursor: pointer; border: none; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-
-        .slider-value {
-            font-size: 12px;
-            color: var(--color-primary);
-            font-weight: 600;
-            margin-top: 4px;
-            text-align: center;
-        }
-
-        .button-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            padding: 12px 16px;
-            border: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-primary {
-            background-color: var(--color-primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color-primary-hover);
-        }
-
-        .btn-secondary {
-            background-color: #f5f5f5;
-            color: var(--color-text);
-            border: 1px solid var(--color-border);
-        }
-
-        .btn-secondary:hover {
-            background-color: #e0e0e0;
-        }
-
+        .slider-value { font-size: 12px; color: var(--color-primary); font-weight: 600; margin-top: 4px; text-align: center; }
+        .button-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+        .btn { padding: 12px 16px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn-primary { background-color: var(--color-primary); color: white; }
+        .btn-primary:hover { background-color: var(--color-primary-hover); }
+        .btn-secondary { background-color: #f5f5f5; color: var(--color-text); border: 1px solid var(--color-border); }
+        .btn-secondary:hover { background-color: #e0e0e0; }
         .result-section {
             background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
-            padding: 20px;
-            border-radius: 8px;
-            border: 2px solid var(--color-primary-light);
-            margin-bottom: 20px;
+            padding: 20px; border-radius: 8px; border: 2px solid var(--color-primary-light); margin-bottom: 20px;
         }
-
-        .result-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 16px;
-        }
-
-        .result-item:last-child {
-            margin-bottom: 0;
-        }
-
+        .result-item { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 16px; }
+        .result-item:last-child { margin-bottom: 0; }
         .result-box {
-            background-color: white;
-            padding: 16px;
-            border-radius: 6px;
-            border-left: 4px solid var(--color-primary);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            background-color: white; padding: 16px; border-radius: 6px;
+            border-left: 4px solid var(--color-primary); box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-
-        .result-label {
-            font-size: 12px;
-            color: var(--color-text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-            font-weight: 600;
-        }
-
-        .result-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: 4px;
-        }
-
-        .result-unit {
-            font-size: 13px;
-            color: var(--color-text-secondary);
-        }
-
+        .result-label { font-size: 12px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; font-weight: 600; }
+        .result-value { font-size: 24px; font-weight: 700; color: var(--color-primary); margin-bottom: 4px; }
+        .result-unit { font-size: 13px; color: var(--color-text-secondary); }
         .interpretation {
-            background-color: white;
-            padding: 16px;
-            border-radius: 6px;
-            border-left: 4px solid var(--color-success);
-            font-size: 13px;
-            color: var(--color-text);
-            line-height: 1.6;
-            margin-top: 15px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            background-color: white; padding: 16px; border-radius: 6px;
+            border-left: 4px solid var(--color-success); font-size: 13px;
+            color: var(--color-text); line-height: 1.6; margin-top: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-
-        .interpretation strong {
-            color: var(--color-success);
-            display: block;
-            margin-bottom: 6px;
-        }
-
+        .interpretation strong { color: var(--color-success); display: block; margin-bottom: 6px; }
         .note {
-            background-color: #e8f5e9;
-            padding: 12px;
-            border-radius: 6px;
-            border-left: 4px solid var(--color-primary);
-            font-size: 12px;
-            color: #1b5e20;
-            margin-top: 12px;
-            line-height: 1.5;
+            background-color: #e8f5e9; padding: 12px; border-radius: 6px;
+            border-left: 4px solid var(--color-primary); font-size: 12px; color: #1b5e20; margin-top: 12px; line-height: 1.5;
         }
-
         .reference {
-            background-color: #fff8e1;
-            padding: 12px;
-            border-radius: 6px;
-            border-left: 4px solid var(--color-warning);
-            font-size: 12px;
-            color: #8d6e63;
-            margin-top: 12px;
-            line-height: 1.5;
+            background-color: #fff8e1; padding: 12px; border-radius: 6px;
+            border-left: 4px solid var(--color-warning); font-size: 12px; color: #8d6e63; margin-top: 12px; line-height: 1.5;
         }
-
-        .info-box {
-            background-color: #e8f5e9;
-            border-left: 4px solid var(--color-primary-light);
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-        }
-
-        .info-box p {
-            margin: 0;
-            color: var(--color-text);
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .classification-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-
-        .badge-tokutei {
-            background-color: #ffe6e6;
-            color: #e74c3c;
-            border: 2px solid #e74c3c;
-        }
-
-        .badge-doryoku {
-            background-color: #fff3e0;
-            color: var(--color-warning);
-            border: 2px solid var(--color-warning);
-        }
-
-        .badge-kansatsu {
-            background-color: #e8f5e9;
-            color: var(--color-success);
-            border: 2px solid var(--color-success);
-        }
-
-        .result-details {
-            background-color: #e8f5e9;
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--color-primary);
-        }
-
-        .result-details h3 {
-            color: var(--color-primary);
-            margin-bottom: 12px;
-            font-size: 16px;
-        }
-
-        .result-details p {
-            margin-bottom: 8px;
-            line-height: 1.8;
-        }
-
-        .result-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .result-icon {
-            font-size: 40px;
-            min-width: 50px;
-            text-align: center;
-        }
-
-        .result-text h2 {
-            color: var(--color-primary);
-            margin-bottom: 5px;
-        }
-
-        .documents-section {
-            margin-top: 25px;
-        }
-
-        .documents-section h3 {
-            color: var(--color-primary);
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-
-        .document-list {
-            background-color: #f9f9f9;
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .document-item {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--color-border);
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .document-item:last-child {
-            border-bottom: none;
-        }
-
-        .document-number {
-            background-color: var(--color-primary);
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .document-content {
-            flex: 1;
-        }
-
-        .document-content strong {
-            color: var(--color-text);
-            display: block;
-            margin-bottom: 3px;
-        }
-
-        .document-content p {
-            font-size: 13px;
-            color: var(--color-text-secondary);
-            margin: 0;
-        }
-
-        .procedure-section {
-            margin-top: 25px;
-        }
-
-        .procedure-section h3 {
-            color: var(--color-primary);
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-
-        .procedure-steps {
-            background-color: #f9f9f9;
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .step {
-            padding: 15px;
-            border-bottom: 1px solid var(--color-border);
-            display: flex;
-            gap: 15px;
-        }
-
-        .step:last-child {
-            border-bottom: none;
-        }
-
-        .step-number {
-            background-color: var(--color-success);
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            flex-shrink: 0;
-            font-size: 16px;
-        }
-
-        .step-content {
-            flex: 1;
-        }
-
-        .step-content strong {
-            color: var(--color-text);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .step-content p {
-            font-size: 13px;
-            color: var(--color-text-secondary);
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        .report-section {
-            background: var(--color-surface);
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
-
-        .report-section h2 {
-            color: var(--color-primary);
-            margin-bottom: 20px;
-            font-size: 20px;
-            border-bottom: 2px solid var(--color-primary);
-            padding-bottom: 10px;
-        }
-
-        .report-output {
-            background-color: #f5f5f5;
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            padding: 20px;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            line-height: 1.6;
-            color: var(--color-text);
-            max-height: 400px;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-
-        .export-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .btn-export {
-            background-color: var(--color-success);
-            color: white;
-            flex: 1;
-            text-align: center;
-        }
-
-        .btn-export:hover {
-            background-color: #229954;
-        }
-
-        .hidden {
-            display: none;
-        }
-
+        .info-box { background-color: #e8f5e9; border-left: 4px solid var(--color-primary-light); padding: 15px; border-radius: 4px; margin-bottom: 15px; }
+        .info-box p { margin: 0; color: var(--color-text); font-size: 13px; line-height: 1.6; }
+        .classification-badge { display: inline-block; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 16px; margin-bottom: 15px; }
+        .badge-tokutei { background-color: #ffe6e6; color: #e74c3c; border: 2px solid #e74c3c; }
+        .badge-doryoku { background-color: #fff3e0; color: var(--color-warning); border: 2px solid var(--color-warning); }
+        .badge-kansatsu { background-color: #e8f5e9; color: var(--color-success); border: 2px solid var(--color-success); }
+        .result-details { background-color: #e8f5e9; padding: 20px; border-radius: 6px; margin-bottom: 20px; border-left: 4px solid var(--color-primary); }
+        .result-details h3 { color: var(--color-primary); margin-bottom: 12px; font-size: 16px; }
+        .result-details p { margin-bottom: 8px; line-height: 1.8; }
+        .result-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .result-icon { font-size: 40px; min-width: 50px; text-align: center; }
+        .result-text h2 { color: var(--color-primary); margin-bottom: 5px; }
+        .documents-section { margin-top: 25px; }
+        .documents-section h3 { color: var(--color-primary); margin-bottom: 15px; font-size: 16px; }
+        .document-list { background-color: #f9f9f9; border: 1px solid var(--color-border); border-radius: 6px; padding: 0; overflow: hidden; }
+        .document-item { padding: 12px 15px; border-bottom: 1px solid var(--color-border); display: flex; align-items: flex-start; gap: 12px; }
+        .document-item:last-child { border-bottom: none; }
+        .document-number { background-color: var(--color-primary); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+        .document-content { flex: 1; }
+        .document-content strong { color: var(--color-text); display: block; margin-bottom: 3px; }
+        .document-content p { font-size: 13px; color: var(--color-text-secondary); margin: 0; }
+        .procedure-section { margin-top: 25px; }
+        .procedure-section h3 { color: var(--color-primary); margin-bottom: 15px; font-size: 16px; }
+        .procedure-steps { background-color: #f9f9f9; border: 1px solid var(--color-border); border-radius: 6px; padding: 0; overflow: hidden; }
+        .step { padding: 15px; border-bottom: 1px solid var(--color-border); display: flex; gap: 15px; }
+        .step:last-child { border-bottom: none; }
+        .step-number { background-color: var(--color-success); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; font-size: 16px; }
+        .step-content { flex: 1; }
+        .step-content strong { color: var(--color-text); display: block; margin-bottom: 4px; }
+        .step-content p { font-size: 13px; color: var(--color-text-secondary); margin: 0; line-height: 1.6; }
+        .report-section { background: var(--color-surface); border-radius: 8px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 20px; }
+        .report-section h2 { color: var(--color-primary); margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid var(--color-primary); padding-bottom: 10px; }
+        .report-output { background-color: #f5f5f5; border: 1px solid var(--color-border); border-radius: 6px; padding: 20px; font-family: 'Courier New', monospace; font-size: 12px; line-height: 1.6; color: var(--color-text); max-height: 400px; overflow-y: auto; white-space: pre-wrap; word-wrap: break-word; }
+        .export-buttons { display: flex; gap: 10px; margin-top: 15px; }
+        .btn-export { background-color: var(--color-success); color: white; flex: 1; text-align: center; }
+        .btn-export:hover { background-color: #229954; }
+        /* メール送信機能 追加CSS */
+        .btn-email { background: linear-gradient(135deg, #3b82c4 0%, #1a5fa8 100%); color: white; flex: 1; text-align: center; }
+        .btn-email:hover { opacity: 0.9; }
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+        .modal-overlay.open { display: flex; }
+        .modal-box { background: #fff; border-radius: 14px; padding: 32px 36px; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; box-shadow: 0 12px 40px rgba(0,0,0,0.2); position: relative; }
+        .modal-box h3 { font-size: 1.1rem; color: #1a3a5c; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+        .modal-field { margin-bottom: 14px; }
+        .modal-field label { display: block; font-size: 0.82rem; font-weight: 600; color: #2d5278; margin-bottom: 5px; }
+        .modal-field input, .modal-field select { width: 100%; padding: 9px 12px; border: 1.5px solid #c5d8ea; border-radius: 7px; font-size: 0.92rem; outline: none; background: #f7fbff; color: #1a3a5c; font-family: inherit; transition: border-color 0.2s; }
+        .modal-field input:focus, .modal-field select:focus { border-color: #3b82c4; box-shadow: 0 0 0 3px rgba(59,130,196,0.15); background: #fff; }
+        .modal-subject-preview { font-size: 0.75rem; color: #2E7D32; margin-top: 4px; font-style: italic; }
+        .modal-fixed-email { padding: 9px 12px; background: #f0f4f8; border: 1.5px solid #c5d8ea; border-radius: 7px; font-size: 0.92rem; color: #3a6a99; font-weight: 600; }
+        .consult-datetime-group { background: #f1f8f1; border: 1px solid #c8e6c9; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px; }
+        .consult-datetime-group .consult-label { font-size: 0.82rem; font-weight: 700; color: #2E7D32; margin-bottom: 10px; display: block; }
+        .consult-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .consult-row input[type="date"], .consult-row select { width: 100%; padding: 8px 10px; border: 1.5px solid #c5d8ea; border-radius: 6px; font-size: 0.88rem; background: #fff; color: #1a3a5c; font-family: inherit; outline: none; }
+        .consult-row input[type="date"]:focus, .consult-row select:focus { border-color: #2E7D32; box-shadow: 0 0 0 2px rgba(46,125,50,0.15); }
+        .modal-buttons { display: flex; gap: 10px; margin-top: 6px; }
+        .modal-send-btn { flex: 2; background: linear-gradient(135deg, #3b82c4, #1a5fa8); color: white; border: none; border-radius: 8px; padding: 11px; font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity 0.2s; }
+        .modal-send-btn:hover { opacity: 0.88; }
+        .modal-cancel-btn { flex: 1; background: #f0f0f0; color: #555; border: none; border-radius: 8px; padding: 11px; font-size: 0.92rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .modal-cancel-btn:hover { background: #e0e0e0; }
+        .modal-note { margin-top: 14px; padding: 10px 13px; background: #f0f7ff; border-left: 3px solid #3b82c4; border-radius: 0 6px 6px 0; font-size: 0.76rem; color: #3a6a99; line-height: 1.55; }
+        .modal-close { position: absolute; top: 14px; right: 16px; background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #aaa; line-height: 1; }
+        .modal-close:hover { color: #555; }
+        .hidden { display: none; }
         @media (max-width: 768px) {
-            .layout {
-                grid-template-columns: 1fr;
-            }
-
-            .result-item {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .button-group {
-                grid-template-columns: 1fr;
-            }
-
-            .content-wrapper {
-                padding: 15px;
-            }
-
-            .tab-btn {
-                padding: 12px 16px;
-                font-size: 13px;
-            }
-
-            .header h1 {
-                font-size: 24px;
-            }
+            .layout { grid-template-columns: 1fr; }
+            .result-item { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .button-group { grid-template-columns: 1fr; }
+            .content-wrapper { padding: 15px; }
+            .tab-btn { padding: 12px 16px; font-size: 13px; }
+            .header h1 { font-size: 24px; }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🔬 臨床研究 総合ツール</h1>
-            <p>研究分類判定と症例数計算をワンストップで実施</p>
+<div class="container">
+    <div class="header">
+        <h1>🔬 臨床研究 総合ツール</h1>
+        <p>研究分類判定と症例数計算をワンストップで実施</p>
+    </div>
+
+    <div class="tabs-wrapper">
+        <button class="tab-btn active" onclick="switchTab('tab-classification')">研究分類判定</button>
+        <button class="tab-btn" onclick="switchTab('tab-calculator')">症例数計算</button>
+        <button class="tab-btn" onclick="switchTab('tab-procedures')">標準業務手順書</button>
+    </div>
+
+    <div class="content-wrapper">
+
+        <!-- ===== Tab1: 研究分類判定 ===== -->
+        <div id="tab-classification" class="tab-content active" style="animation: none;">
+            <div class="layout">
+                <div class="section">
+                    <h2>📋 研究情報入力</h2>
+                    <div class="info-box">
+                        <p><strong>ご注意：</strong> このシステムは一般的なガイダンスを提供します。最終的な分類は、所属機関の臨床研究審査委員会(CRB)の判断に従ってください。</p>
+                    </div>
+                    <form id="classificationForm">
+                        <!-- 研究立案者 -->
+                        <div class="form-row" style="margin-bottom:16px;">
+                            <div class="form-group" style="margin-bottom:0;">
+                                <label for="researcherAffiliation">研究立案者の所属</label>
+                                <input type="text" id="researcherAffiliation" placeholder="例：静岡がんセンター 研究支援センター">
+                            </div>
+                            <div class="form-group" style="margin-bottom:0;">
+                                <label for="researcherName">研究立案者の氏名</label>
+                                <input type="text" id="researcherName" placeholder="例：山田 太郎">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="researchTitle">研究のタイトル</label>
+                            <input type="text" id="researchTitle" placeholder="例：肺がん術後患者の生活の質に関する研究" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="researchObjective">研究目的</label>
+                            <textarea id="researchObjective" placeholder="例：肺がん患者の術後QOLに影響する要因を明らかにする" required></textarea>
+                        </div>
+                        <div class="question-group">
+                            <label>Q1. 研究目的で、通常診療とは異なる介入を行いますか？</label>
+                            <div class="radio-group">
+                                <div class="radio-item"><input type="radio" id="intervention_yes" name="intervention" value="yes" required><label for="intervention_yes">はい（介入を行う）</label></div>
+                                <div class="radio-item"><input type="radio" id="intervention_no" name="intervention" value="no"><label for="intervention_no">いいえ（観察のみ）</label></div>
+                            </div>
+                        </div>
+                        <div class="question-group">
+                            <label>Q2. 未承認・適応外の医薬品・医療機器を使用しますか？</label>
+                            <div class="radio-group">
+                                <div class="radio-item"><input type="radio" id="unapproved_yes" name="unapproved" value="yes" required><label for="unapproved_yes">はい</label></div>
+                                <div class="radio-item"><input type="radio" id="unapproved_no" name="unapproved" value="no"><label for="unapproved_no">いいえ</label></div>
+                                <div class="radio-item"><input type="radio" id="unapproved_na" name="unapproved" value="na"><label for="unapproved_na">該当しない</label></div>
+                            </div>
+                        </div>
+                        <div class="question-group">
+                            <label>Q3. 製薬企業等から資金提供を受けますか？</label>
+                            <div class="radio-group">
+                                <div class="radio-item"><input type="radio" id="funding_yes" name="funding" value="yes" required><label for="funding_yes">はい</label></div>
+                                <div class="radio-item"><input type="radio" id="funding_no" name="funding" value="no"><label for="funding_no">いいえ</label></div>
+                            </div>
+                        </div>
+                        <div class="question-group">
+                            <label>Q4. 治験（薬機法に基づく）として実施しますか？</label>
+                            <div class="radio-group">
+                                <div class="radio-item"><input type="radio" id="clinicaltrial_yes" name="clinicalTrial" value="yes" required><label for="clinicaltrial_yes">はい</label></div>
+                                <div class="radio-item"><input type="radio" id="clinicaltrial_no" name="clinicalTrial" value="no"><label for="clinicaltrial_no">いいえ</label></div>
+                            </div>
+                        </div>
+                        <div class="question-group">
+                            <label>Q5. 侵襲の程度はどれですか？</label>
+                            <div class="radio-group">
+                                <div class="radio-item"><input type="radio" id="invasiveness_none" name="invasiveness" value="none" required><label for="invasiveness_none">侵襲なし（アンケート・診療記録閲覧のみ）</label></div>
+                                <div class="radio-item"><input type="radio" id="invasiveness_minor" name="invasiveness" value="minor"><label for="invasiveness_minor">軽微な侵襲（採血・問診等）</label></div>
+                                <div class="radio-item"><input type="radio" id="invasiveness_major" name="invasiveness" value="major"><label for="invasiveness_major">侵襲あり（処置・手術等）</label></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="participantNumber">予定参加者数</label>
+                            <input type="number" id="participantNumber" min="1" placeholder="例：100" required>
+                        </div>
+                        <div class="question-group">
+                            <label>Q6. 多施設共同研究ですか？</label>
+                            <div class="radio-group">
+                                <div class="radio-item"><input type="radio" id="multicenter_yes" name="multicenter" value="yes" required><label for="multicenter_yes">はい</label></div>
+                                <div class="radio-item"><input type="radio" id="multicenter_no" name="multicenter" value="no"><label for="multicenter_no">いいえ（単施設）</label></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="additionalInfo">補足情報（任意）</label>
+                            <textarea id="additionalInfo" placeholder="その他、判定に関連する情報があれば記載してください"></textarea>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">🔍 判定する</button>
+                            <button type="reset" class="btn btn-secondary">リセット</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="section hidden" id="resultsCard">
+                    <h2>📊 判定結果</h2>
+                    <div id="resultsContent"></div>
+                </div>
+            </div>
+
+            <div class="report-section hidden" id="reportSection">
+                <h2>📄 臨床研究相談レポート</h2>
+                <p style="margin-bottom: 15px; color: var(--color-text-secondary);">以下のレポートを保存・送信できます</p>
+                <div class="report-output" id="reportOutput"></div>
+                <div class="export-buttons" style="flex-wrap:wrap; gap:8px;">
+                    <button onclick="exportReport('txt')" class="btn btn-export">TXTで保存</button>
+                    <button onclick="exportReport('csv')" class="btn btn-export" style="background-color:#00897B;">CSVで保存</button>
+                    <button onclick="copyReport()" class="btn btn-secondary" style="flex: 1;">コピー</button>
+                    <button onclick="openMailModal()" class="btn btn-email">✉ メールで送信</button>
+                </div>
+            </div>
         </div>
 
-        <div class="tabs-wrapper">
-            <button class="tab-btn active" onclick="switchTab('tab-classification')">研究分類判定</button>
-            <button class="tab-btn" onclick="switchTab('tab-calculator')">症例数計算</button>
-            <button class="tab-btn" onclick="switchTab('tab-procedures')">標準業務手順書</button>
-        </div>
-
-        <div class="content-wrapper">
-            <!-- Tab 2: 症例数計算ツール -->
-            <div id="tab-calculator" class="tab-content">
-                <div style="margin-bottom: 20px;">
-                    <div style="display: flex; gap: 5px; margin-bottom: 20px; border-bottom: 2px solid var(--color-border); overflow-x: auto; padding-bottom: 0;">
-                        <button class="tab-btn active" onclick="switchCalculatorTab('calc1')" style="border-bottom: 3px solid transparent; margin-bottom: -2px;">対応なしt検定</button>
-                        <button class="tab-btn" onclick="switchCalculatorTab('calc2')" style="border-bottom: 3px solid transparent; margin-bottom: -2px;">比率の比較</button>
-                        <button class="tab-btn" onclick="switchCalculatorTab('calc3')" style="border-bottom: 3px solid transparent; margin-bottom: -2px;">対応ありt検定</button>
-                        <button class="tab-btn" onclick="switchCalculatorTab('calc4')" style="border-bottom: 3px solid transparent; margin-bottom: -2px;">感度・特異度</button>
-                    </div>
+        <!-- ===== Tab2: 症例数計算 ===== -->
+        <div id="tab-calculator" class="tab-content">
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex; gap: 5px; margin-bottom: 20px; border-bottom: 2px solid var(--color-border); overflow-x: auto; padding-bottom: 0;">
+                    <button class="tab-btn active" onclick="switchCalculatorTab('calc1')" style="border-bottom: 3px solid transparent; margin-bottom: -2px;">対応なしt検定</button>
+                    <button class="tab-btn" onclick="switchCalculatorTab('calc2')" style="border-bottom: 3px solid transparent; margin-bottom: -2px;">比率の比較</button>
+                    <button class="tab-btn" onclick="switchCalculatorTab('calc3')" style="border-bottom: 3px solid transparent; margin-bottom: -2px;">対応ありt検定</button>
+                    <button class="tab-btn" onclick="switchCalculatorTab('calc4')" style="border-bottom: 3px solid transparent; margin-bottom: -2px;">感度・特異度</button>
                 </div>
+            </div>
 
-                <!-- Calc1: Unpaired t-test -->
-                <div id="calc1" class="tab-content active" style="animation: none;">
-                    <div class="layout">
-                        <div class="section">
-                            <h2>パラメータ設定</h2>
-                            <div class="form-group">
-                                <label>検定方法</label>
-                                <select id="test-type-1">
-                                    <option value="two-sided">両側検定</option>
-                                    <option value="one-sided">片側検定</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>有意水準 (α)</label>
-                                <div class="description">通常は0.05を使用</div>
-                                <input type="number" id="alpha-1" value="0.05" step="0.01" min="0.001" max="0.5">
-                            </div>
-                            <div class="form-group">
-                                <label>検定力 (1-β)</label>
-                                <div class="description">通常は0.80または0.90を使用</div>
-                                <input type="number" id="power-1" value="0.80" step="0.01" min="0.5" max="0.99">
-                            </div>
-                            <div class="form-group">
-                                <label>対照群の平均</label>
-                                <input type="number" id="mean-control-1" value="100" step="1">
-                            </div>
-                            <div class="form-group">
-                                <label>介入群の平均</label>
-                                <input type="number" id="mean-intervention-1" value="110" step="1">
-                            </div>
-                            <div class="form-group">
-                                <label>標準偏差 (σ)</label>
-                                <div class="description">両群で等しいと仮定</div>
-                                <input type="number" id="sd-1" value="15" step="0.1" min="0.1">
-                            </div>
-                            <div class="form-group">
-                                <label>群の比率 (介入群/対照群)</label>
-                                <div class="slider-container">
-                                    <input type="range" id="ratio-1" value="1" step="0.1" min="0.5" max="3" oninput="updateRatio('ratio-1', 'ratio-value-1')">
-                                    <div class="slider-value" id="ratio-value-1">1:1</div>
-                                </div>
-                            </div>
-                            <div class="button-group">
-                                <button class="btn btn-primary" onclick="calculateTTest(1)">計算</button>
-                                <button class="btn btn-secondary" onclick="resetForm(1)">リセット</button>
-                            </div>
-                        </div>
-                        <div class="section">
-                            <h2>計算結果</h2>
-                            <div id="result-container-1" class="result-section" style="display:none;">
-                                <div class="result-item">
-                                    <div class="result-box">
-                                        <div class="result-label">対照群（症例数）</div>
-                                        <div class="result-value" id="n-control-1">-</div>
-                                        <div class="result-unit">人/群</div>
-                                    </div>
-                                    <div class="result-box">
-                                        <div class="result-label">介入群（症例数）</div>
-                                        <div class="result-value" id="n-intervention-1">-</div>
-                                        <div class="result-unit">人/群</div>
-                                    </div>
-                                </div>
-                                <div class="result-item">
-                                    <div class="result-box">
-                                        <div class="result-label">総症例数</div>
-                                        <div class="result-value" id="n-total-1">-</div>
-                                        <div class="result-unit">人</div>
-                                    </div>
-                                    <div class="result-box">
-                                        <div class="result-label">効果量 (Cohen's d)</div>
-                                        <div class="result-value" id="effect-size-1">-</div>
-                                        <div class="result-unit"></div>
-                                    </div>
-                                </div>
-                                <div class="interpretation" id="interpretation-1"></div>
-                            </div>
-                            <div id="empty-result-1" style="text-align: center; color: var(--color-text-secondary); padding: 20px;">
-                                左側のパラメータを設定して「計算」をクリックしてください
-                            </div>
-                            <div class="note">
-                                <strong>注意：</strong> この計算は参考値です。実際の症例数決定は生物統計家と相談してください。
-                            </div>
-                            <div class="reference">
-                                <strong>参考：</strong> Cohen's d 0.2=小、0.5=中、0.8=大の効果
-                            </div>
-                        </div>
+            <!-- Calc1 -->
+            <div id="calc1" class="tab-content active" style="animation: none;">
+                <div class="layout">
+                    <div class="section">
+                        <h2>パラメータ設定</h2>
+                        <div class="form-group"><label>検定方法</label><select id="test-type-1"><option value="two-sided">両側検定</option><option value="one-sided">片側検定</option></select></div>
+                        <div class="form-group"><label>有意水準 (α)</label><div class="description">通常は0.05を使用</div><input type="number" id="alpha-1" value="0.05" step="0.01" min="0.001" max="0.5"></div>
+                        <div class="form-group"><label>検定力 (1-β)</label><div class="description">通常は0.80または0.90を使用</div><input type="number" id="power-1" value="0.80" step="0.01" min="0.5" max="0.99"></div>
+                        <div class="form-group"><label>対照群の平均</label><input type="number" id="mean-control-1" value="100" step="1"></div>
+                        <div class="form-group"><label>介入群の平均</label><input type="number" id="mean-intervention-1" value="110" step="1"></div>
+                        <div class="form-group"><label>標準偏差 (σ)</label><div class="description">両群で等しいと仮定</div><input type="number" id="sd-1" value="15" step="0.1" min="0.1"></div>
+                        <div class="form-group"><label>群の比率 (介入群/対照群)</label><div class="slider-container"><input type="range" id="ratio-1" value="1" step="0.1" min="0.5" max="3" oninput="updateRatio('ratio-1','ratio-value-1')"><div class="slider-value" id="ratio-value-1">1:1</div></div></div>
+                        <div class="button-group"><button class="btn btn-primary" onclick="calculateTTest(1)">計算</button><button class="btn btn-secondary" onclick="resetForm(1)">リセット</button></div>
                     </div>
-                </div>
-
-                <!-- Calc2: Proportion comparison -->
-                <div id="calc2" class="tab-content" style="animation: none;">
-                    <div class="layout">
-                        <div class="section">
-                            <h2>パラメータ設定</h2>
-                            <div class="form-group">
-                                <label>検定方法</label>
-                                <select id="test-type-2">
-                                    <option value="two-sided">両側検定</option>
-                                    <option value="one-sided">片側検定</option>
-                                </select>
+                    <div class="section">
+                        <h2>計算結果</h2>
+                        <div id="result-container-1" class="result-section" style="display:none;">
+                            <div class="result-item">
+                                <div class="result-box"><div class="result-label">対照群（症例数）</div><div class="result-value" id="n-control-1">-</div><div class="result-unit">人/群</div></div>
+                                <div class="result-box"><div class="result-label">介入群（症例数）</div><div class="result-value" id="n-intervention-1">-</div><div class="result-unit">人/群</div></div>
                             </div>
-                            <div class="form-group">
-                                <label>有意水準 (α)</label>
-                                <input type="number" id="alpha-2" value="0.05" step="0.01" min="0.001" max="0.5">
+                            <div class="result-item">
+                                <div class="result-box"><div class="result-label">総症例数</div><div class="result-value" id="n-total-1">-</div><div class="result-unit">人</div></div>
+                                <div class="result-box"><div class="result-label">効果量 (Cohen's d)</div><div class="result-value" id="effect-size-1">-</div></div>
                             </div>
-                            <div class="form-group">
-                                <label>検定力 (1-β)</label>
-                                <input type="number" id="power-2" value="0.80" step="0.01" min="0.5" max="0.99">
-                            </div>
-                            <div class="form-group">
-                                <label>対照群の反応率 (%)</label>
-                                <div class="description">0～100の値を入力</div>
-                                <input type="number" id="p1-2" value="30" step="1" min="1" max="99">
-                            </div>
-                            <div class="form-group">
-                                <label>介入群の反応率 (%)</label>
-                                <div class="description">0～100の値を入力</div>
-                                <input type="number" id="p2-2" value="50" step="1" min="1" max="99">
-                            </div>
-                            <div class="form-group">
-                                <label>群の比率 (介入群/対照群)</label>
-                                <div class="slider-container">
-                                    <input type="range" id="ratio-2" value="1" step="0.1" min="0.5" max="3" oninput="updateRatio('ratio-2', 'ratio-value-2')">
-                                    <div class="slider-value" id="ratio-value-2">1:1</div>
-                                </div>
-                            </div>
-                            <div class="button-group">
-                                <button class="btn btn-primary" onclick="calculateProportions(2)">計算</button>
-                                <button class="btn btn-secondary" onclick="resetForm(2)">リセット</button>
-                            </div>
+                            <div class="interpretation" id="interpretation-1"></div>
                         </div>
-                        <div class="section">
-                            <h2>計算結果</h2>
-                            <div id="result-container-2" class="result-section" style="display:none;">
-                                <div class="result-item">
-                                    <div class="result-box">
-                                        <div class="result-label">対照群（症例数）</div>
-                                        <div class="result-value" id="n-control-2">-</div>
-                                        <div class="result-unit">人/群</div>
-                                    </div>
-                                    <div class="result-box">
-                                        <div class="result-label">介入群（症例数）</div>
-                                        <div class="result-value" id="n-intervention-2">-</div>
-                                        <div class="result-unit">人/群</div>
-                                    </div>
-                                </div>
-                                <div class="result-item">
-                                    <div class="result-box">
-                                        <div class="result-label">総症例数</div>
-                                        <div class="result-value" id="n-total-2">-</div>
-                                        <div class="result-unit">人</div>
-                                    </div>
-                                    <div class="result-box">
-                                        <div class="result-label">反応率の差</div>
-                                        <div class="result-value" id="risk-diff-2">-</div>
-                                        <div class="result-unit">%</div>
-                                    </div>
-                                </div>
-                                <div class="interpretation" id="interpretation-2"></div>
-                            </div>
-                            <div id="empty-result-2" style="text-align: center; color: var(--color-text-secondary); padding: 20px;">
-                                左側のパラメータを設定して「計算」をクリックしてください
-                            </div>
-                            <div class="note">
-                                <strong>推奨値：</strong> α=0.05（両側）、検定力=0.80
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Calc3: Paired t-test -->
-                <div id="calc3" class="tab-content" style="animation: none;">
-                    <div class="layout">
-                        <div class="section">
-                            <h2>パラメータ設定</h2>
-                            <div class="form-group">
-                                <label>検定方法</label>
-                                <select id="test-type-3">
-                                    <option value="two-sided">両側検定</option>
-                                    <option value="one-sided">片側検定</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>有意水準 (α)</label>
-                                <input type="number" id="alpha-3" value="0.05" step="0.01" min="0.001" max="0.5">
-                            </div>
-                            <div class="form-group">
-                                <label>検定力 (1-β)</label>
-                                <input type="number" id="power-3" value="0.80" step="0.01" min="0.5" max="0.99">
-                            </div>
-                            <div class="form-group">
-                                <label>前値-後値の平均差</label>
-                                <input type="number" id="mean-diff-3" value="5" step="0.1">
-                            </div>
-                            <div class="form-group">
-                                <label>対応差の標準偏差</label>
-                                <div class="description">前値-後値の差の標準偏差</div>
-                                <input type="number" id="sd-diff-3" value="10" step="0.1" min="0.1">
-                            </div>
-                            <div class="button-group">
-                                <button class="btn btn-primary" onclick="calculatePairedTTest(3)">計算</button>
-                                <button class="btn btn-secondary" onclick="resetForm(3)">リセット</button>
-                            </div>
-                        </div>
-                        <div class="section">
-                            <h2>計算結果</h2>
-                            <div id="result-container-3" class="result-section" style="display:none;">
-                                <div class="result-item">
-                                    <div class="result-box">
-                                        <div class="result-label">必要症例数</div>
-                                        <div class="result-value" id="n-paired-3">-</div>
-                                        <div class="result-unit">人</div>
-                                    </div>
-                                    <div class="result-box">
-                                        <div class="result-label">効果量 (Cohen's d)</div>
-                                        <div class="result-value" id="effect-size-paired-3">-</div>
-                                        <div class="result-unit"></div>
-                                    </div>
-                                </div>
-                                <div class="interpretation" id="interpretation-3"></div>
-                            </div>
-                            <div id="empty-result-3" style="text-align: center; color: var(--color-text-secondary); padding: 20px;">
-                                左側のパラメータを設定して「計算」をクリックしてください
-                            </div>
-                            <div class="note">
-                                <strong>用途：</strong> 同じ被験者を前後で測定する場合に使用
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Calc4: Sensitivity and Specificity -->
-                <div id="calc4" class="tab-content" style="animation: none;">
-                    <div class="layout">
-                        <div class="section">
-                            <h2>パラメータ設定</h2>
-                            <div class="form-group">
-                                <label>有意水準 (α)</label>
-                                <input type="number" id="alpha-4" value="0.05" step="0.01" min="0.001" max="0.5">
-                            </div>
-                            <div class="form-group">
-                                <label>検定力 (1-β)</label>
-                                <input type="number" id="power-4" value="0.80" step="0.01" min="0.5" max="0.99">
-                            </div>
-                            <div class="form-group">
-                                <label>帰無仮説：感度 (%)</label>
-                                <div class="description">判定したい下限値</div>
-                                <input type="number" id="sens0-4" value="80" step="1" min="50" max="99">
-                            </div>
-                            <div class="form-group">
-                                <label>対立仮説：感度 (%)</label>
-                                <div class="description">期待される感度</div>
-                                <input type="number" id="sens1-4" value="90" step="1" min="50" max="99">
-                            </div>
-                            <div class="form-group">
-                                <label>有病率 (%)</label>
-                                <div class="description">検査対象集団における疾患の割合</div>
-                                <input type="number" id="prevalence-4" value="20" step="1" min="1" max="99">
-                            </div>
-                            <div class="button-group">
-                                <button class="btn btn-primary" onclick="calculateDiagnostic(4)">計算</button>
-                                <button class="btn btn-secondary" onclick="resetForm(4)">リセット</button>
-                            </div>
-                        </div>
-                        <div class="section">
-                            <h2>計算結果</h2>
-                            <div id="result-container-4" class="result-section" style="display:none;">
-                                <div class="result-item">
-                                    <div class="result-box">
-                                        <div class="result-label">疾患保有者</div>
-                                        <div class="result-value" id="n-disease-4">-</div>
-                                        <div class="result-unit">人</div>
-                                    </div>
-                                    <div class="result-box">
-                                        <div class="result-label">疾患非保有者</div>
-                                        <div class="result-value" id="n-no-disease-4">-</div>
-                                        <div class="result-unit">人</div>
-                                    </div>
-                                </div>
-                                <div class="result-item">
-                                    <div class="result-box">
-                                        <div class="result-label">総症例数</div>
-                                        <div class="result-value" id="n-total-4">-</div>
-                                        <div class="result-unit">人</div>
-                                    </div>
-                                </div>
-                                <div class="interpretation" id="interpretation-4"></div>
-                            </div>
-                            <div id="empty-result-4" style="text-align: center; color: var(--color-text-secondary); padding: 20px;">
-                                左側のパラメータを設定して「計算」をクリックしてください
-                            </div>
-                            <div class="note">
-                                <strong>用途：</strong> 新しい診断検査の感度を検証する場合
-                            </div>
-                        </div>
+                        <div id="empty-result-1" style="text-align:center; color:var(--color-text-secondary); padding:20px;">左側のパラメータを設定して「計算」をクリックしてください</div>
+                        <div class="note"><strong>注意：</strong> この計算は参考値です。実際の症例数決定は生物統計家と相談してください。</div>
+                        <div class="reference"><strong>参考：</strong> Cohen's d 0.2=小、0.5=中、0.8=大の効果</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tab 1: 研究分類判定システム -->
-            <div id="tab-classification" class="tab-content active" style="animation: none;">
+            <!-- Calc2 -->
+            <div id="calc2" class="tab-content" style="animation: none;">
                 <div class="layout">
                     <div class="section">
-                        <h2>📋 研究情報入力</h2>
-                        <div class="info-box">
-                            <p><strong>ご注意：</strong> このシステムは一般的なガイダンスを提供します。最終的な分類は、所属機関の臨床研究審査委員会(CRB)の判断に従ってください。</p>
+                        <h2>パラメータ設定</h2>
+                        <div class="form-group"><label>検定方法</label><select id="test-type-2"><option value="two-sided">両側検定</option><option value="one-sided">片側検定</option></select></div>
+                        <div class="form-group"><label>有意水準 (α)</label><input type="number" id="alpha-2" value="0.05" step="0.01" min="0.001" max="0.5"></div>
+                        <div class="form-group"><label>検定力 (1-β)</label><input type="number" id="power-2" value="0.80" step="0.01" min="0.5" max="0.99"></div>
+                        <div class="form-group"><label>対照群の反応率 (%)</label><div class="description">0～100の値を入力</div><input type="number" id="p1-2" value="30" step="1" min="1" max="99"></div>
+                        <div class="form-group"><label>介入群の反応率 (%)</label><div class="description">0～100の値を入力</div><input type="number" id="p2-2" value="50" step="1" min="1" max="99"></div>
+                        <div class="form-group"><label>群の比率 (介入群/対照群)</label><div class="slider-container"><input type="range" id="ratio-2" value="1" step="0.1" min="0.5" max="3" oninput="updateRatio('ratio-2','ratio-value-2')"><div class="slider-value" id="ratio-value-2">1:1</div></div></div>
+                        <div class="button-group"><button class="btn btn-primary" onclick="calculateProportions(2)">計算</button><button class="btn btn-secondary" onclick="resetForm(2)">リセット</button></div>
+                    </div>
+                    <div class="section">
+                        <h2>計算結果</h2>
+                        <div id="result-container-2" class="result-section" style="display:none;">
+                            <div class="result-item">
+                                <div class="result-box"><div class="result-label">対照群（症例数）</div><div class="result-value" id="n-control-2">-</div><div class="result-unit">人/群</div></div>
+                                <div class="result-box"><div class="result-label">介入群（症例数）</div><div class="result-value" id="n-intervention-2">-</div><div class="result-unit">人/群</div></div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-box"><div class="result-label">総症例数</div><div class="result-value" id="n-total-2">-</div><div class="result-unit">人</div></div>
+                                <div class="result-box"><div class="result-label">反応率の差</div><div class="result-value" id="risk-diff-2">-</div><div class="result-unit">%</div></div>
+                            </div>
+                            <div class="interpretation" id="interpretation-2"></div>
                         </div>
-                        <form id="classificationForm">
-                            <div class="form-group">
-                                <label for="researchTitle">研究のタイトル</label>
-                                <input type="text" id="researchTitle" placeholder="例：肺がん術後患者の生活の質に関する研究" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="researchObjective">研究目的</label>
-                                <textarea id="researchObjective" placeholder="例：肺がん患者の術後QOLに影響する要因を明らかにする" required></textarea>
-                            </div>
-                            <div class="question-group">
-                                <label>Q1. 研究目的で、通常診療とは異なる介入を行いますか？</label>
-                                <div class="radio-group">
-                                    <div class="radio-item">
-                                        <input type="radio" id="intervention_yes" name="intervention" value="yes" required>
-                                        <label for="intervention_yes">はい（介入を行う）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="intervention_no" name="intervention" value="no" required>
-                                        <label for="intervention_no">いいえ（通常診療のデータのみ）</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-group">
-                                <label>Q2. 未承認または適応外の医薬品・医療機器を使用しますか？</label>
-                                <div class="radio-group">
-                                    <div class="radio-item">
-                                        <input type="radio" id="unapproved_yes" name="unapproved" value="yes" required>
-                                        <label for="unapproved_yes">はい（未承認・適応外を使用）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="unapproved_no" name="unapproved" value="no" required>
-                                        <label for="unapproved_no">いいえ（承認済みのみ）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="unapproved_na" name="unapproved" value="na" required>
-                                        <label for="unapproved_na">医薬品等は使用しない</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-group">
-                                <label>Q3. 企業からの資金提供を受けますか？</label>
-                                <div class="radio-group">
-                                    <div class="radio-item">
-                                        <input type="radio" id="funding_yes" name="funding" value="yes" required>
-                                        <label for="funding_yes">はい（企業から資金提供）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="funding_no" name="funding" value="no" required>
-                                        <label for="funding_no">いいえ（受けない、または公的資金のみ）</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-group">
-                                <label>Q4. 医薬品医療機器等法に基づく治験ですか？</label>
-                                <div class="radio-group">
-                                    <div class="radio-item">
-                                        <input type="radio" id="clinical_trial_yes" name="clinicalTrial" value="yes" required>
-                                        <label for="clinical_trial_yes">はい（治験）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="clinical_trial_no" name="clinicalTrial" value="no" required>
-                                        <label for="clinical_trial_no">いいえ（治験ではない）</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="question-group">
-                                <label>Q5. 研究に伴う侵襲の程度</label>
-                                <div class="radio-group">
-                                    <div class="radio-item">
-                                        <input type="radio" id="invasiveness_none" name="invasiveness" value="none" required>
-                                        <label for="invasiveness_none">侵襲なし（アンケート、既存データのみ）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="invasiveness_minor" name="invasiveness" value="minor" required>
-                                        <label for="invasiveness_minor">軽微な侵襲（採血など）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="invasiveness_major" name="invasiveness" value="major" required>
-                                        <label for="invasiveness_major">侵襲あり（軽微でない）</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="participantNumber">予定参加者数</label>
-                                <input type="number" id="participantNumber" min="1" placeholder="例：100" required>
-                            </div>
-                            <div class="question-group">
-                                <label>Q6. 多施設共同研究ですか？</label>
-                                <div class="radio-group">
-                                    <div class="radio-item">
-                                        <input type="radio" id="multicenter_yes" name="multicenter" value="yes" required>
-                                        <label for="multicenter_yes">はい（多施設共同研究）</label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <input type="radio" id="multicenter_no" name="multicenter" value="no" required>
-                                        <label for="multicenter_no">いいえ（単施設研究）</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="additionalInfo">その他の特記事項（任意）</label>
-                                <textarea id="additionalInfo" placeholder="例：対象患者は小児科患者、高齢者のみなど"></textarea>
-                            </div>
-                            <div class="button-group">
-                                <button type="submit" class="btn btn-primary">判定を実行</button>
-                                <button type="reset" class="btn btn-secondary">リセット</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="section hidden" id="resultsCard">
-                        <h2>📊 判定結果</h2>
-                        <div id="resultsContent"></div>
+                        <div id="empty-result-2" style="text-align:center; color:var(--color-text-secondary); padding:20px;">左側のパラメータを設定して「計算」をクリックしてください</div>
+                        <div class="note"><strong>推奨値：</strong> α=0.05（両側）、検定力=0.80</div>
                     </div>
                 </div>
+            </div>
 
-                <div class="report-section hidden" id="reportSection">
-                    <h2>📄 レポート出力</h2>
-                    <p style="margin-bottom: 15px; color: var(--color-text-secondary);">判定結果の詳細レポート（テキスト形式）</p>
-                    <div class="report-output" id="reportOutput"></div>
-                    <div class="export-buttons">
-                        <button onclick="exportReport('txt')" class="btn-export">テキストで保存</button>
-                        <button onclick="copyReport()" class="btn btn-secondary" style="flex: 1;">コピー</button>
+            <!-- Calc3 -->
+            <div id="calc3" class="tab-content" style="animation: none;">
+                <div class="layout">
+                    <div class="section">
+                        <h2>パラメータ設定</h2>
+                        <div class="form-group"><label>検定方法</label><select id="test-type-3"><option value="two-sided">両側検定</option><option value="one-sided">片側検定</option></select></div>
+                        <div class="form-group"><label>有意水準 (α)</label><input type="number" id="alpha-3" value="0.05" step="0.01" min="0.001" max="0.5"></div>
+                        <div class="form-group"><label>検定力 (1-β)</label><input type="number" id="power-3" value="0.80" step="0.01" min="0.5" max="0.99"></div>
+                        <div class="form-group"><label>前値-後値の平均差</label><input type="number" id="mean-diff-3" value="5" step="0.1"></div>
+                        <div class="form-group"><label>対応差の標準偏差</label><div class="description">前値-後値の差の標準偏差</div><input type="number" id="sd-diff-3" value="10" step="0.1" min="0.1"></div>
+                        <div class="button-group"><button class="btn btn-primary" onclick="calculatePairedTTest(3)">計算</button><button class="btn btn-secondary" onclick="resetForm(3)">リセット</button></div>
+                    </div>
+                    <div class="section">
+                        <h2>計算結果</h2>
+                        <div id="result-container-3" class="result-section" style="display:none;">
+                            <div class="result-item">
+                                <div class="result-box"><div class="result-label">必要症例数</div><div class="result-value" id="n-paired-3">-</div><div class="result-unit">人</div></div>
+                                <div class="result-box"><div class="result-label">効果量 (Cohen's d)</div><div class="result-value" id="effect-size-paired-3">-</div></div>
+                            </div>
+                            <div class="interpretation" id="interpretation-3"></div>
+                        </div>
+                        <div id="empty-result-3" style="text-align:center; color:var(--color-text-secondary); padding:20px;">左側のパラメータを設定して「計算」をクリックしてください</div>
+                        <div class="note"><strong>用途：</strong> 同じ被験者を前後で測定する場合に使用</div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Calc4 -->
+            <div id="calc4" class="tab-content" style="animation: none;">
+                <div class="layout">
+                    <div class="section">
+                        <h2>パラメータ設定</h2>
+                        <div class="form-group"><label>有意水準 (α)</label><input type="number" id="alpha-4" value="0.05" step="0.01" min="0.001" max="0.5"></div>
+                        <div class="form-group"><label>検定力 (1-β)</label><input type="number" id="power-4" value="0.80" step="0.01" min="0.5" max="0.99"></div>
+                        <div class="form-group"><label>帰無仮説：感度 (%)</label><div class="description">判定したい下限値</div><input type="number" id="sens0-4" value="80" step="1" min="50" max="99"></div>
+                        <div class="form-group"><label>対立仮説：感度 (%)</label><div class="description">期待される感度</div><input type="number" id="sens1-4" value="90" step="1" min="50" max="99"></div>
+                        <div class="form-group"><label>有病率 (%)</label><div class="description">検査対象集団における疾患の割合</div><input type="number" id="prevalence-4" value="20" step="1" min="1" max="99"></div>
+                        <div class="button-group"><button class="btn btn-primary" onclick="calculateDiagnostic(4)">計算</button><button class="btn btn-secondary" onclick="resetForm(4)">リセット</button></div>
+                    </div>
+                    <div class="section">
+                        <h2>計算結果</h2>
+                        <div id="result-container-4" class="result-section" style="display:none;">
+                            <div class="result-item">
+                                <div class="result-box"><div class="result-label">疾患保有者</div><div class="result-value" id="n-disease-4">-</div><div class="result-unit">人</div></div>
+                                <div class="result-box"><div class="result-label">疾患非保有者</div><div class="result-value" id="n-no-disease-4">-</div><div class="result-unit">人</div></div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-box"><div class="result-label">総症例数</div><div class="result-value" id="n-total-4">-</div><div class="result-unit">人</div></div>
+                            </div>
+                            <div class="interpretation" id="interpretation-4"></div>
+                        </div>
+                        <div id="empty-result-4" style="text-align:center; color:var(--color-text-secondary); padding:20px;">左側のパラメータを設定して「計算」をクリックしてください</div>
+                        <div class="note"><strong>用途：</strong> 新しい診断検査の感度を検証する場合</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== Tab3: 標準業務手順書 ===== -->
+        <div id="tab-procedures" class="tab-content" style="animation: none;">
+            <div class="section">
+                <h2>📚 標準業務手順書（SOP）</h2>
+                <div class="info-box">
+                    <p><strong>静岡がんセンター 臨床研究支援センター</strong> の標準業務手順書を参照できます。</p>
+                </div>
+                <iframe src="https://www.scchr.jp/clinicaltrial/organizationoffice/managementprocedures.html"
+                    style="width:100%; height:800px; border:1px solid var(--color-border); border-radius:6px;"
+                    title="標準業務手順書"></iframe>
+            </div>
+        </div>
+
+    </div><!-- /content-wrapper -->
+</div><!-- /container -->
+
+    <!-- メール送信モーダル -->
+    <div class="modal-overlay" id="mailModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeMailModal()">✕</button>
+            <h3>✉ 臨床研究相談レポートを送信</h3>
+            <div class="modal-field">
+                <label>送信先メールアドレス（固定）</label>
+                <div class="modal-fixed-email">📧 ns.morizo@gmail.com</div>
+            </div>
+            <div class="modal-field">
+                <label>件名（自動生成）</label>
+                <input type="text" id="modalSubject" readonly style="background:#f0f4f8; cursor:default;"/>
+                <div class="modal-subject-preview" id="modalSubjectPreview"></div>
+            </div>
+            <div class="consult-datetime-group">
+                <span class="consult-label">📅 相談希望日時</span>
+                <div style="margin-bottom:10px;">
+                    <div style="font-size:0.78rem; font-weight:600; color:#555; margin-bottom:5px;">第１希望</div>
+                    <div class="consult-row">
+                        <input type="date" id="date1" />
+                        <select id="time1">
+                            <option value="">--時間帯を選択--</option>
+                            <option value="09:00">09:00</option>
+                            <option value="09:30">09:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:30">12:30</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:30">13:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:30">14:30</option>
+                            <option value="15:00">15:00</option>
+                            <option value="15:30">15:30</option>
+                            <option value="16:00">16:00</option>
+                            <option value="16:30">16:30</option>
+                            <option value="17:00">17:00</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="margin-bottom:10px;">
+                    <div style="font-size:0.78rem; font-weight:600; color:#555; margin-bottom:5px;">第２希望</div>
+                    <div class="consult-row">
+                        <input type="date" id="date2" />
+                        <select id="time2">
+                            <option value="">--時間帯を選択--</option>
+                            <option value="09:00">09:00</option>
+                            <option value="09:30">09:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:30">12:30</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:30">13:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:30">14:30</option>
+                            <option value="15:00">15:00</option>
+                            <option value="15:30">15:30</option>
+                            <option value="16:00">16:00</option>
+                            <option value="16:30">16:30</option>
+                            <option value="17:00">17:00</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div style="font-size:0.78rem; font-weight:600; color:#555; margin-bottom:5px;">第３希望</div>
+                    <div class="consult-row">
+                        <input type="date" id="date3" />
+                        <select id="time3">
+                            <option value="">--時間帯を選択--</option>
+                            <option value="09:00">09:00</option>
+                            <option value="09:30">09:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:30">12:30</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:30">13:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:30">14:30</option>
+                            <option value="15:00">15:00</option>
+                            <option value="15:30">15:30</option>
+                            <option value="16:00">16:00</option>
+                            <option value="16:30">16:30</option>
+                            <option value="17:00">17:00</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-send-btn" onclick="sendReportByMail()">メーラーを起動して送信</button>
+                <button class="modal-cancel-btn" onclick="closeMailModal()">キャンセル</button>
+            </div>
+            <div class="modal-note">
+                📌 送信先: <strong>ns.morizo@gmail.com</strong><br>
+                メーラー上の送信ボタンで送信完了となります。
             </div>
         </div>
     </div>
-            <!-- Tab 3: 標準業務手順書 -->
-            <div id="tab-procedures" class="tab-content" style="animation: none;">
-                <div class="section">
-                    <h2>📖 標準業務手順書</h2>
-                    <div class="info-box">
-                        <p><strong>注：</strong> 外部サイトを埋め込み表示しています。最新の情報は公式サイトでご確認ください。</p>
-                    </div>
-                    <iframe
-                        src="https://www.scchr.jp/clinicaltrial/organization/office_management/procedures.html"
-                        style="width: 100%; height: 800px; border: 1px solid var(--color-border); border-radius: 6px;"
-                        title="静岡がんセンター標準業務手順書">
-                    </iframe>
+
+    <!-- トースト通知 -->
+    <div id="mailToast" style="display:none; position:fixed; bottom:30px; left:50%;
+        transform:translateX(-50%); background:#1a5fa8; color:white; padding:11px 28px;
+        border-radius:50px; font-size:0.88rem; font-weight:600;
+        box-shadow:0 4px 20px rgba(0,0,0,0.2); z-index:9999;">
+        ✅ メーラーを起動しました。メーラー上で送信してください。
+    </div>
+
+<script>
+    // ===== タブ切替 =====
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tabs-wrapper .tab-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    function switchCalculatorTab(calcId) {
+        document.querySelectorAll('#tab-calculator .tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('#tab-calculator .tab-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById(calcId).classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    // ===== 正規分布逆関数 =====
+    function inverseNormalApprox(p) {
+        if (p < 0.5) return -inverseNormalApprox(1 - p);
+        const t = Math.sqrt(-2.0 * Math.log(1.0 - p));
+        const c0 = 2.515517, c1 = 0.802853, c2 = 0.010328;
+        const d1 = 1.432788, d2 = 0.189269, d3 = 0.001308;
+        const numerator = c0 + c1 * t + c2 * t * t;
+        const denominator = 1 + d1 * t + d2 * t * t + d3 * t * t * t;
+        return t - numerator / denominator;
+    }
+
+    // ===== スライダー更新 =====
+    function updateRatio(sliderId, displayId) {
+        const ratio = parseFloat(document.getElementById(sliderId).value).toFixed(1);
+        const displayValue = ratio >= 1.0 ? `1:${ratio}` : `${1/ratio}:1`;
+        document.getElementById(displayId).textContent = displayValue;
+    }
+
+    // ===== 対応なしt検定 =====
+    function calculateTTest(tab) {
+        const alpha = parseFloat(document.getElementById(`alpha-${tab}`).value);
+        const power = parseFloat(document.getElementById(`power-${tab}`).value);
+        const meanControl = parseFloat(document.getElementById(`mean-control-${tab}`).value);
+        const meanIntervention = parseFloat(document.getElementById(`mean-intervention-${tab}`).value);
+        const sd = parseFloat(document.getElementById(`sd-${tab}`).value);
+        const ratio = parseFloat(document.getElementById(`ratio-${tab}`).value);
+        const testType = document.getElementById(`test-type-${tab}`).value;
+        if (isNaN(alpha) || isNaN(power) || isNaN(sd) || sd <= 0) { alert('正しい値を入力してください'); return; }
+        const zAlpha = inverseNormalApprox(1 - alpha / (testType === 'two-sided' ? 2 : 1));
+        const zBeta = inverseNormalApprox(power);
+        const effectSize = Math.abs(meanIntervention - meanControl) / sd;
+        const nControl = Math.pow(zAlpha + zBeta, 2) * 2 * Math.pow(sd, 2) / Math.pow(meanIntervention - meanControl, 2);
+        const nIntervention = nControl * ratio;
+        const nTotal = Math.ceil(nControl) + Math.ceil(nIntervention);
+        document.getElementById(`n-control-${tab}`).textContent = Math.ceil(nControl);
+        document.getElementById(`n-intervention-${tab}`).textContent = Math.ceil(nIntervention);
+        document.getElementById(`n-total-${tab}`).textContent = nTotal;
+        document.getElementById(`effect-size-${tab}`).textContent = effectSize.toFixed(2);
+        let interpretation = `平均差 ${Math.abs(meanIntervention - meanControl).toFixed(1)}、SD ${sd}の場合、有意水準 ${alpha * 100}%、検定力 ${(power * 100).toFixed(0)}%を達成するには対照群 ${Math.ceil(nControl)}人、合計 ${nTotal}人が必要です。`;
+        document.getElementById(`interpretation-${tab}`).innerHTML = `<strong>解釈</strong>${interpretation}`;
+        document.getElementById(`result-container-${tab}`).style.display = 'block';
+        document.getElementById(`empty-result-${tab}`).style.display = 'none';
+    }
+
+    // ===== 比率比較 =====
+    function calculateProportions(tab) {
+        const alpha = parseFloat(document.getElementById(`alpha-${tab}`).value);
+        const power = parseFloat(document.getElementById(`power-${tab}`).value);
+        const p1 = parseFloat(document.getElementById(`p1-${tab}`).value) / 100;
+        const p2 = parseFloat(document.getElementById(`p2-${tab}`).value) / 100;
+        const ratio = parseFloat(document.getElementById(`ratio-${tab}`).value);
+        const testType = document.getElementById(`test-type-${tab}`).value;
+        if (isNaN(alpha) || isNaN(power) || p1 <= 0 || p2 <= 0) { alert('正しい値を入力してください'); return; }
+        const zAlpha = inverseNormalApprox(1 - alpha / (testType === 'two-sided' ? 2 : 1));
+        const zBeta = inverseNormalApprox(power);
+        const nControl = Math.pow(zAlpha + zBeta, 2) * (p1 * (1 - p1) + p2 * (1 - p2)) / Math.pow(p2 - p1, 2);
+        const nIntervention = nControl * ratio;
+        const nTotal = Math.ceil(nControl) + Math.ceil(nIntervention);
+        const riskDiff = (p2 - p1) * 100;
+        document.getElementById(`n-control-${tab}`).textContent = Math.ceil(nControl);
+        document.getElementById(`n-intervention-${tab}`).textContent = Math.ceil(nIntervention);
+        document.getElementById(`n-total-${tab}`).textContent = nTotal;
+        document.getElementById(`risk-diff-${tab}`).textContent = riskDiff.toFixed(1);
+        let interpretation = `反応率 ${p1 * 100}% vs ${p2 * 100}%の場合、有意水準 ${alpha * 100}%、検定力 ${(power * 100).toFixed(0)}%を達成するには対照群 ${Math.ceil(nControl)}人、合計 ${nTotal}人が必要です。`;
+        document.getElementById(`interpretation-${tab}`).innerHTML = `<strong>解釈</strong>${interpretation}`;
+        document.getElementById(`result-container-${tab}`).style.display = 'block';
+        document.getElementById(`empty-result-${tab}`).style.display = 'none';
+    }
+
+    // ===== 対応ありt検定 =====
+    function calculatePairedTTest(tab) {
+        const alpha = parseFloat(document.getElementById(`alpha-${tab}`).value);
+        const power = parseFloat(document.getElementById(`power-${tab}`).value);
+        const meanDiff = parseFloat(document.getElementById(`mean-diff-${tab}`).value);
+        const sdDiff = parseFloat(document.getElementById(`sd-diff-${tab}`).value);
+        if (isNaN(alpha) || isNaN(power) || isNaN(meanDiff) || isNaN(sdDiff) || sdDiff <= 0) { alert('正しい値を入力してください'); return; }
+        const zAlpha = inverseNormalApprox(1 - alpha / 2);
+        const zBeta = inverseNormalApprox(power);
+        const effectSize = Math.abs(meanDiff) / sdDiff;
+        const nPaired = Math.pow((zAlpha + zBeta) * sdDiff / meanDiff, 2);
+        const nFinal = Math.ceil(nPaired);
+        document.getElementById(`n-paired-${tab}`).textContent = nFinal;
+        document.getElementById(`effect-size-paired-${tab}`).textContent = effectSize.toFixed(2);
+        let interpretation = `平均差 ${Math.abs(meanDiff).toFixed(1)}、SD ${sdDiff}の場合、有意水準 ${alpha * 100}%、検定力 ${(power * 100).toFixed(0)}%を達成するには ${nFinal}人が必要です。`;
+        document.getElementById(`interpretation-${tab}`).innerHTML = `<strong>解釈</strong>${interpretation}`;
+        document.getElementById(`result-container-${tab}`).style.display = 'block';
+        document.getElementById(`empty-result-${tab}`).style.display = 'none';
+    }
+
+    // ===== 感度・特異度 =====
+    function calculateDiagnostic(tab) {
+        const alpha = parseFloat(document.getElementById(`alpha-${tab}`).value);
+        const power = parseFloat(document.getElementById(`power-${tab}`).value);
+        const sens0 = parseFloat(document.getElementById(`sens0-${tab}`).value) / 100;
+        const sens1 = parseFloat(document.getElementById(`sens1-${tab}`).value) / 100;
+        const prevalence = parseFloat(document.getElementById(`prevalence-${tab}`).value) / 100;
+        if (isNaN(alpha) || isNaN(power) || sens0 <= 0 || sens1 <= 0) { alert('正しい値を入力してください'); return; }
+        const zAlpha = inverseNormalApprox(1 - alpha / 2);
+        const zBeta = inverseNormalApprox(power);
+        const nDisease = Math.pow(zAlpha + zBeta, 2) * (sens0 * (1 - sens0) + sens1 * (1 - sens1)) / Math.pow(sens1 - sens0, 2);
+        const nNoDisease = Math.ceil(nDisease) * (1 - prevalence) / prevalence;
+        const nTotal = Math.ceil(nDisease) + Math.ceil(nNoDisease);
+        document.getElementById(`n-disease-${tab}`).textContent = Math.ceil(nDisease);
+        document.getElementById(`n-no-disease-${tab}`).textContent = Math.ceil(nNoDisease);
+        document.getElementById(`n-total-${tab}`).textContent = nTotal;
+        let interpretation = `感度 ${sens0 * 100}% vs ${sens1 * 100}%、有病率 ${prevalence * 100}%の場合、疾患保有者 ${Math.ceil(nDisease)}人、非保有者 ${Math.ceil(nNoDisease)}人、合計 ${nTotal}人が必要です。`;
+        document.getElementById(`interpretation-${tab}`).innerHTML = `<strong>解釈</strong>${interpretation}`;
+        document.getElementById(`result-container-${tab}`).style.display = 'block';
+        document.getElementById(`empty-result-${tab}`).style.display = 'none';
+    }
+
+    // ===== フォームリセット =====
+    function resetForm(tab) {
+        const inputs = document.querySelectorAll(`#calc${tab} input, #calc${tab} select`);
+        inputs.forEach(input => { input.value = input.getAttribute('value') || input.getAttribute('data-default'); });
+        document.getElementById(`result-container-${tab}`).style.display = 'none';
+        document.getElementById(`empty-result-${tab}`).style.display = 'block';
+    }
+
+    // ===== 分類ロジック =====
+    const classificationLogic = {
+        isSpecifiedClinical: function(formData) {
+            if (formData.clinicalTrial === 'yes') return false;
+            if (formData.unapproved === 'yes') return true;
+            if (formData.intervention === 'yes' && formData.funding === 'yes') return true;
+            return false;
+        },
+        isEffortObligation: function(formData) {
+            if (formData.clinicalTrial === 'yes') return false;
+            if (this.isSpecifiedClinical(formData)) return false;
+            if (formData.intervention === 'yes' && formData.unapproved !== 'yes' && formData.funding === 'no') return true;
+            return false;
+        },
+        isObservationWithIntervention: function(formData) {
+            if (formData.intervention === 'yes' && formData.unapproved === 'na') return true;
+            if (formData.intervention === 'yes' && formData.unapproved === 'no' && formData.funding === 'no') {
+                if (formData.invasiveness !== 'none') return true;
+            }
+            return false;
+        },
+        isSimpleObservation: function(formData) {
+            if (formData.intervention === 'no') return true;
+            return false;
+        }
+    };
+
+    // ===== 必要書類・手順 =====
+    const requiredDocuments = {
+        tokutei: [
+            { name: '特定臨床研究計画書', detail: '研究の目的、方法、統計解析等を記載' },
+            { name: '説明同意文書', detail: 'jRCT登録番号を含む' },
+            { name: 'COI申告書', detail: '全研究者の利益相反状況の申告' },
+            { name: 'CRB審査申請書類一式', detail: '認定臨床研究審査委員会への提出書類' }
+        ],
+        doryoku: [
+            { name: '研究計画書', detail: '研究の目的・方法・倫理的配慮を記載' },
+            { name: '説明同意文書', detail: 'jRCT登録推奨' },
+            { name: 'COI申告書', detail: '利益相反の確認' },
+            { name: '倫理審査申請書類', detail: '機関内倫理委員会への申請' }
+        ],
+        observationintervention: [
+            { name: '研究計画書', detail: '観察研究として計画' },
+            { name: '倫理審査申請書類', detail: 'IRBへの申請' }
+        ],
+        simpleobservation: [
+            { name: '研究計画書', detail: '簡易版でも可' },
+            { name: '倫理審査申請書類またはIRB確認書', detail: '機関の規定に従う' }
+        ]
+    };
+
+    const procedures = {
+        tokutei: [
+            { step: 'CRB事前相談', detail: '認定臨床研究審査委員会への事前相談を実施' },
+            { step: 'COI申告', detail: '全研究者の利益相反状況を申告' },
+            { step: 'CRB審査・承認', detail: '認定CRBでの審査を受け承認を取得' },
+            { step: 'jRCT登録', detail: 'jRCT(Japan Registry of Clinical Trials)への登録' },
+            { step: '研究実施', detail: '承認後、計画書に従い研究を開始' },
+            { step: '定期報告', detail: 'CRBへの定期的な進捗報告' }
+        ],
+        doryoku: [
+            { step: '倫理委員会相談', detail: '機関内倫理委員会への事前相談' },
+            { step: 'COI確認', detail: '利益相反の確認と申告' },
+            { step: '倫理審査・承認', detail: '倫理委員会での審査・承認取得' },
+            { step: 'jRCT登録（推奨）', detail: 'jRCTへの登録が推奨されています' }
+        ],
+        observationintervention: [
+            { step: '倫理委員会申請', detail: '機関内倫理委員会への申請' },
+            { step: '審査・承認', detail: '承認取得後に研究開始' },
+            { step: '研究実施・報告', detail: '計画書に従い実施・報告' }
+        ],
+        simpleobservation: [
+            { step: '倫理委員会確認', detail: '機関の規定に従い倫理審査を受ける' },
+            { step: '研究実施', detail: '承認後に研究を開始' }
+        ]
+    };
+
+    // ===== フォーム送信・判定 =====
+    document.getElementById('classificationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = {
+            affiliation: document.getElementById('researcherAffiliation').value,
+            name: document.getElementById('researcherName').value,
+            title: document.getElementById('researchTitle').value,
+            objective: document.getElementById('researchObjective').value,
+            intervention: document.querySelector('input[name="intervention"]:checked').value,
+            unapproved: document.querySelector('input[name="unapproved"]:checked').value,
+            funding: document.querySelector('input[name="funding"]:checked').value,
+            clinicalTrial: document.querySelector('input[name="clinicalTrial"]:checked').value,
+            invasiveness: document.querySelector('input[name="invasiveness"]:checked').value,
+            participantNumber: document.getElementById('participantNumber').value,
+            multicenter: document.querySelector('input[name="multicenter"]:checked').value,
+            additionalInfo: document.getElementById('additionalInfo').value
+        };
+
+        let classification, classificationEng, badge, explanation, docs, procs;
+
+        if (formData.clinicalTrial === 'yes') {
+            classification = '治験（薬機法）';
+            classificationEng = 'clinicaltrial';
+            badge = '治験';
+            explanation = 'この研究は薬機法に基づく治験に該当します。治験実施計画書(プロトコール)の作成、IRBおよびPMDAへの届出が必要です。';
+            docs = [{ name: '治験実施計画書', detail: 'PMDAへの届出が必要' }, { name: '治験審査委員会(IRB)申請書類', detail: '機関内IRBでの審査' }];
+            procs = [{ step: 'PMDA相談', detail: '治験開始前にPMDAに相談・届出' }, { step: 'IRB審査', detail: '治験審査委員会での審査・承認' }];
+        } else if (classificationLogic.isSpecifiedClinical(formData)) {
+            classification = '特定臨床研究';
+            classificationEng = 'tokutei';
+            badge = '特定臨床研究';
+            explanation = 'この研究は臨床研究法における「特定臨床研究」に該当します。認定臨床研究審査委員会(CRB)での審査・承認、jRCTへの登録が義務付けられています。';
+            docs = requiredDocuments.tokutei;
+            procs = procedures.tokutei;
+        } else if (classificationLogic.isEffortObligation(formData)) {
+            classification = '臨床研究法 努力義務';
+            classificationEng = 'doryoku';
+            badge = '努力義務';
+            explanation = 'この研究は臨床研究法における「努力義務」の対象です。jRCTへの登録や倫理審査委員会での審査が推奨されています。';
+            docs = requiredDocuments.doryoku;
+            procs = procedures.doryoku;
+        } else if (classificationLogic.isObservationWithIntervention(formData)) {
+            classification = '観察研究（介入を含む）';
+            classificationEng = 'observationintervention';
+            badge = '観察研究（介入あり）';
+            explanation = 'この研究は介入を含む観察研究です。機関内倫理審査委員会(IRB)での審査が必要です。';
+            docs = requiredDocuments.observationintervention;
+            procs = procedures.observationintervention;
+        } else if (classificationLogic.isSimpleObservation(formData)) {
+            classification = '観察研究（純粋観察）';
+            classificationEng = 'simpleobservation';
+            badge = '観察研究';
+            explanation = 'この研究は純粋な観察研究です。機関の規定に従い倫理審査を受けてください。';
+            docs = requiredDocuments.simpleobservation;
+            procs = procedures.simpleobservation;
+        }
+
+        displayResults(formData, classification, classificationEng, badge, explanation, docs, procs);
+        generateReport(formData, classification, classificationEng, docs, procs);
+        document.getElementById('resultsCard').classList.remove('hidden');
+        document.getElementById('reportSection').classList.remove('hidden');
+        setTimeout(() => { document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth' }); }, 100);
+    });
+
+    // ===== 結果表示 =====
+    function displayResults(formData, classification, classificationEng, badge, explanation, docs, procs) {
+        const resultsContent = document.getElementById('resultsContent');
+        let badgeClass = 'badge-tokutei';
+        if (classificationEng === 'doryoku') badgeClass = 'badge-doryoku';
+        else if (classificationEng === 'observationintervention' || classificationEng === 'simpleobservation') badgeClass = 'badge-kansatsu';
+
+        let html = `
+            <div class="result-header">
+                <div class="result-icon">📋</div>
+                <div class="result-text">
+                    <h2>判定結果</h2>
+                    <span class="classification-badge ${badgeClass}">${badge}</span>
                 </div>
             </div>
-    <script>
-        // Tab switching function
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tabs-wrapper .tab-btn').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
-        }
+            <div class="result-details">
+                <h3>分類：${classification}</h3>
+                <p>${explanation}</p>
+            </div>
+            <div class="info-box"><p><strong>⚠️ 注意：</strong> この判定は参考情報です。確定的な分類は所属機関のCRBまたは倫理委員会に確認してください。</p></div>`;
 
-        function switchCalculatorTab(calcId) {
-            document.querySelectorAll('#tab-calculator .tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('#tab-calculator .tab-btn').forEach(el => el.classList.remove('active'));
-            document.getElementById(calcId).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        // 正規分布の逆関数（近似）
-        function inverseNormalApprox(p) {
-            if (p < 0.5) {
-                return -inverseNormalApprox(1 - p);
-            }
-            const t = Math.sqrt(-2.0 * Math.log(1.0 - p));
-            const c0 = 2.515517;
-            const c1 = 0.802853;
-            const c2 = 0.010328;
-            const d1 = 1.432788;
-            const d2 = 0.189269;
-            const d3 = 0.001308;
-            const numerator = c0 + c1 * t + c2 * t * t;
-            const denominator = 1 + d1 * t + d2 * t * t + d3 * t * t * t;
-            return t - numerator / denominator;
-        }
-
-        function updateRatio(sliderId, displayId) {
-            const ratio = parseFloat(document.getElementById(sliderId).value).toFixed(1);
-            const displayValue = ratio === '1.0' ? '1:1' : `${ratio}:1`;
-            document.getElementById(displayId).textContent = displayValue;
-        }
-
-        function calculateTTest(tab) {
-            const alpha = parseFloat(document.getElementById('alpha-' + tab).value);
-            const power = parseFloat(document.getElementById('power-' + tab).value);
-            const meanControl = parseFloat(document.getElementById('mean-control-' + tab).value);
-            const meanIntervention = parseFloat(document.getElementById('mean-intervention-' + tab).value);
-            const sd = parseFloat(document.getElementById('sd-' + tab).value);
-            const ratio = parseFloat(document.getElementById('ratio-' + tab).value);
-            const testType = document.getElementById('test-type-' + tab).value;
-
-            if (isNaN(alpha) || isNaN(power) || isNaN(sd) || sd <= 0) {
-                alert('有効な値を入力してください');
-                return;
-            }
-
-            const zAlpha = inverseNormalApprox(1 - alpha / (testType === 'two-sided' ? 2 : 1));
-            const zBeta = inverseNormalApprox(power);
-            const effectSize = Math.abs(meanIntervention - meanControl) / sd;
-            
-            const nControl = Math.pow(zAlpha + zBeta, 2) * 2 * Math.pow(sd, 2) / Math.pow(meanIntervention - meanControl, 2);
-            const nIntervention = nControl * ratio;
-            const nTotal = Math.ceil(nControl + nIntervention);
-
-            document.getElementById('n-control-' + tab).textContent = Math.ceil(nControl);
-            document.getElementById('n-intervention-' + tab).textContent = Math.ceil(nIntervention);
-            document.getElementById('n-total-' + tab).textContent = nTotal;
-            document.getElementById('effect-size-' + tab).textContent = effectSize.toFixed(2);
-            
-            let interpretation = `平均値の差は${Math.abs(meanIntervention - meanControl).toFixed(1)}で、標準偏差${sd}の環境下では、`;
-            interpretation += `有意水準${(alpha * 100).toFixed(1)}%で${(power * 100).toFixed(0)}%の検定力を得るには、`;
-            interpretation += `各群最少${Math.ceil(nControl)}人の合計${nTotal}人の症例が必要です。`;
-            document.getElementById('interpretation-' + tab).innerHTML = `<strong>解釈：</strong> ${interpretation}`;
-
-            document.getElementById('result-container-' + tab).style.display = 'block';
-            document.getElementById('empty-result-' + tab).style.display = 'none';
-        }
-
-        function calculateProportions(tab) {
-            const alpha = parseFloat(document.getElementById('alpha-' + tab).value);
-            const power = parseFloat(document.getElementById('power-' + tab).value);
-            const p1 = parseFloat(document.getElementById('p1-' + tab).value) / 100;
-            const p2 = parseFloat(document.getElementById('p2-' + tab).value) / 100;
-            const ratio = parseFloat(document.getElementById('ratio-' + tab).value);
-            const testType = document.getElementById('test-type-' + tab).value;
-
-            if (isNaN(alpha) || isNaN(power) || p1 <= 0 || p2 <= 0) {
-                alert('有効な値を入力してください');
-                return;
-            }
-
-            const zAlpha = inverseNormalApprox(1 - alpha / (testType === 'two-sided' ? 2 : 1));
-            const zBeta = inverseNormalApprox(power);
-            
-            const nControl = Math.pow(zAlpha + zBeta, 2) * (p1 * (1 - p1) + p2 * (1 - p2)) / Math.pow(p2 - p1, 2);
-            const nIntervention = nControl * ratio;
-            const nTotal = Math.ceil(nControl + nIntervention);
-            const riskDiff = (p2 - p1) * 100;
-
-            document.getElementById('n-control-' + tab).textContent = Math.ceil(nControl);
-            document.getElementById('n-intervention-' + tab).textContent = Math.ceil(nIntervention);
-            document.getElementById('n-total-' + tab).textContent = nTotal;
-            document.getElementById('risk-diff-' + tab).textContent = riskDiff.toFixed(1);
-            
-            let interpretation = `対照群の反応率${(p1 * 100).toFixed(0)}%から介入群の反応率${(p2 * 100).toFixed(0)}%への改善を、`;
-            interpretation += `有意水準${(alpha * 100).toFixed(1)}%で${(power * 100).toFixed(0)}%の検定力で検出するには、`;
-            interpretation += `各群最少${Math.ceil(nControl)}人の合計${nTotal}人の症例が必要です。`;
-            document.getElementById('interpretation-' + tab).innerHTML = `<strong>解釈：</strong> ${interpretation}`;
-
-            document.getElementById('result-container-' + tab).style.display = 'block';
-            document.getElementById('empty-result-' + tab).style.display = 'none';
-        }
-
-        function calculatePairedTTest(tab) {
-            const alpha = parseFloat(document.getElementById('alpha-' + tab).value);
-            const power = parseFloat(document.getElementById('power-' + tab).value);
-            const meanDiff = parseFloat(document.getElementById('mean-diff-' + tab).value);
-            const sdDiff = parseFloat(document.getElementById('sd-diff-' + tab).value);
-
-            if (isNaN(alpha) || isNaN(power) || isNaN(meanDiff) || isNaN(sdDiff) || sdDiff <= 0) {
-                alert('有効な値を入力してください');
-                return;
-            }
-
-            const zAlpha = inverseNormalApprox(1 - alpha / 2);
-            const zBeta = inverseNormalApprox(power);
-            const effectSize = Math.abs(meanDiff) / sdDiff;
-            
-            const nPaired = Math.pow((zAlpha + zBeta) / (meanDiff / sdDiff), 2);
-            const nFinal = Math.ceil(nPaired);
-
-            document.getElementById('n-paired-' + tab).textContent = nFinal;
-            document.getElementById('effect-size-paired-' + tab).textContent = effectSize.toFixed(2);
-            
-            let interpretation = `平均値の差${Math.abs(meanDiff).toFixed(1)}、標準偏差${sdDiff}の対応のあるデータでは、`;
-            interpretation += `有意水準${(alpha * 100).toFixed(1)}%で${(power * 100).toFixed(0)}%の検定力を得るには、`;
-            interpretation += `最少${nFinal}人の症例が必要です。`;
-            document.getElementById('interpretation-' + tab).innerHTML = `<strong>解釈：</strong> ${interpretation}`;
-
-            document.getElementById('result-container-' + tab).style.display = 'block';
-            document.getElementById('empty-result-' + tab).style.display = 'none';
-        }
-
-        function calculateDiagnostic(tab) {
-            const alpha = parseFloat(document.getElementById('alpha-' + tab).value);
-            const power = parseFloat(document.getElementById('power-' + tab).value);
-            const sens0 = parseFloat(document.getElementById('sens0-' + tab).value) / 100;
-            const sens1 = parseFloat(document.getElementById('sens1-' + tab).value) / 100;
-            const prevalence = parseFloat(document.getElementById('prevalence-' + tab).value) / 100;
-
-            if (isNaN(alpha) || isNaN(power) || sens0 <= 0 || sens1 <= 0) {
-                alert('有効な値を入力してください');
-                return;
-            }
-
-            const zAlpha = inverseNormalApprox(1 - alpha / 2);
-            const zBeta = inverseNormalApprox(power);
-            
-            const nDisease = Math.pow(zAlpha + zBeta, 2) * (sens0 * (1 - sens0) + sens1 * (1 - sens1)) / Math.pow(sens1 - sens0, 2);
-            const nNoDisease = Math.ceil(nDisease * (1 - prevalence) / prevalence);
-            const nTotal = Math.ceil(nDisease + nNoDisease);
-
-            document.getElementById('n-disease-' + tab).textContent = Math.ceil(nDisease);
-            document.getElementById('n-no-disease-' + tab).textContent = nNoDisease;
-            document.getElementById('n-total-' + tab).textContent = nTotal;
-            
-            let interpretation = `感度${(sens0 * 100).toFixed(0)}%から${(sens1 * 100).toFixed(0)}%への改善を、`;
-            interpretation += `有意水準${(alpha * 100).toFixed(1)}%で${(power * 100).toFixed(0)}%の検定力で検出するには、`;
-            interpretation += `疾患保有者${Math.ceil(nDisease)}人、非保有者${nNoDisease}人の合計${nTotal}人が必要です。`;
-            document.getElementById('interpretation-' + tab).innerHTML = `<strong>解釈：</strong> ${interpretation}`;
-
-            document.getElementById('result-container-' + tab).style.display = 'block';
-            document.getElementById('empty-result-' + tab).style.display = 'none';
-        }
-
-        function resetForm(tab) {
-            const inputs = document.querySelectorAll(`#calc${tab} input, #calc${tab} select`);
-            inputs.forEach(input => {
-                input.value = input.getAttribute('value') || input.getAttribute('data-default') || '';
+        if (docs && docs.length > 0) {
+            html += `<div class="documents-section">
+                <h3 style="cursor:pointer; color:#0066cc; text-decoration:underline;"
+                    onclick="window.open('https://www.scchr.jp/clinicaltrial/organizationoffice/managementprocedures.html','_blank')">
+                    📄 必要書類（${docs.length}件）※クリックでSOP参照
+                </h3>
+                <div class="document-list">`;
+            docs.forEach((doc, index) => {
+                html += `<div class="document-item">
+                    <div class="document-number">${index + 1}</div>
+                    <div class="document-content"><strong>${escapeHtml(doc.name)}</strong><p>${escapeHtml(doc.detail)}</p></div>
+                </div>`;
             });
-            document.getElementById('result-container-' + tab).style.display = 'none';
-            document.getElementById('empty-result-' + tab).style.display = 'block';
+            html += `</div></div>`;
         }
 
-        // 研究分類ロジック
-        const classificationLogic = {
-            isSpecifiedClinical: function(formData) {
-                if (formData.clinicalTrial === 'yes') return false;
-                if (formData.unapproved === 'yes') return true;
-                if (formData.intervention === 'yes' && formData.funding === 'yes') return true;
-                return false;
-            },
-
-            isEffortObligation: function(formData) {
-                if (formData.clinicalTrial === 'yes') return false;
-                if (this.isSpecifiedClinical(formData)) return false;
-                if (formData.intervention === 'yes' && formData.unapproved !== 'yes' && formData.funding === 'no') {
-                    return true;
-                }
-                return false;
-            },
-
-            isObservationWithIntervention: function(formData) {
-                if (formData.intervention === 'yes' && formData.unapproved === 'na') {
-                    return true;
-                }
-                if (formData.intervention === 'yes' && formData.unapproved === 'no' && formData.funding === 'no') {
-                    if (formData.invasiveness !== 'none') {
-                        return true;
-                    }
-                }
-                return false;
-            },
-
-            isSimpleObservation: function(formData) {
-                if (formData.intervention === 'no') return true;
-                return false;
-            }
-        };
-
-        const requiredDocuments = {
-            tokutei: [
-                { name: '実施計画（様式第一）', detail: 'jRCTに入力したものを出力可能' },
-                { name: '研究計画書', detail: '詳細な研究の計画・方法についての文書' },
-                { name: '同意説明文書及び同意書', detail: '研究対象者への説明と同意取得のための文書' },
-                { name: '研究者の略歴及び研究業績', detail: '研究責任医師と研究分担医師全員分' }
-            ],
-            doryoku: [
-                { name: '実施計画（様式第一）', detail: 'jRCTに入力したものを出力可能' },
-                { name: '研究計画書', detail: '詳細な研究の計画・方法についての文書' },
-                { name: '同意説明文書及び同意書', detail: '研究対象者への説明と同意取得のための文書' }
-            ],
-            observation_intervention: [
-                { name: '研究計画書', detail: '人指針に基づいた研究計画書' },
-                { name: '同意説明文書及び同意書', detail: '研究対象者への説明と同意取得のための文書' }
-            ],
-            simple_observation: [
-                { name: '研究計画書', detail: '人指針に基づいた研究計画書' },
-                { name: '倫理委員会への申請書類', detail: '所属機関のIRB/倫理委員会への申請' }
-            ]
-        };
-
-        const procedures = {
-            tokutei: [
-                { step: '事前相談', detail: 'CRB（認定臨床研究審査委員会）に相談し、研究が特定臨床研究に該当するか確認' },
-                { step: '利益相反確認', detail: '所属機関のCOI委員会に利益相反状況を報告し、管理計画を作成' },
-                { step: '書類準備', detail: '必要書類（実施計画、研究計画書、同意説明文書など）を準備' },
-                { step: 'jRCT登録', detail: 'jRCT（臨床研究等提出・公開システム）に実施計画を入力・登録' },
-                { step: 'CRB審査', detail: '認定審査委員会での審査' },
-                { step: '管理者許可取得', detail: '医療機関管理者から研究実施の許可を取得' }
-            ],
-            doryoku: [
-                { step: '事前相談', detail: 'CRBに相談' },
-                { step: '書類準備', detail: '必要書類を準備' },
-                { step: 'CRB審査', detail: '認定審査委員会での審査' },
-                { step: 'jRCT登録', detail: 'jRCTに実施計画を届け出・公開' }
-            ],
-            observation_intervention: [
-                { step: '倫理委員会申請', detail: '倫理委員会に書類を提出' },
-                { step: '倫理委員会審査', detail: '倫理的側面から審査を実施' },
-                { step: '倫理委員会承認取得', detail: '倫理委員会から承認を取得' }
-            ],
-            simple_observation: [
-                { step: '研究計画策定', detail: '研究計画書を作成' },
-                { step: '倫理委員会相談', detail: '倫理委員会に相談（必要に応じて）' }
-            ]
-        };
-
-        document.getElementById('classificationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const formData = {
-                title: document.getElementById('researchTitle').value,
-                objective: document.getElementById('researchObjective').value,
-                intervention: document.querySelector('input[name="intervention"]:checked').value,
-                unapproved: document.querySelector('input[name="unapproved"]:checked').value,
-                funding: document.querySelector('input[name="funding"]:checked').value,
-                clinicalTrial: document.querySelector('input[name="clinicalTrial"]:checked').value,
-                invasiveness: document.querySelector('input[name="invasiveness"]:checked').value,
-                participantNumber: document.getElementById('participantNumber').value,
-                multicenter: document.querySelector('input[name="multicenter"]:checked').value,
-                additionalInfo: document.getElementById('additionalInfo').value
-            };
-
-            let classification = '';
-            let classificationEng = '';
-            let badge = '';
-            let explanation = '';
-            let docs = [];
-            let procs = [];
-
-            if (formData.clinicalTrial === 'yes') {
-                classification = '治験（医薬品医療機器等法に基づく臨床試験）';
-                classificationEng = 'clinical_trial';
-                badge = '治験';
-                explanation = '医薬品医療機器等法(薬機法)に基づく医薬品・医療機器の承認を目的とした臨床試験は「治験」に該当します。';
-                docs = [];
-                procs = [];
-            } else if (classificationLogic.isSpecifiedClinical(formData)) {
-                classification = '特定臨床研究（臨床研究法の遵守義務対象）';
-                classificationEng = 'tokutei';
-                badge = '特定臨床研究';
-                explanation = '未承認・適応外の医薬品等を使用する、または企業資金を受けて介入研究を実施する場合が該当します。';
-                docs = requiredDocuments.tokutei;
-                procs = procedures.tokutei;
-            } else if (classificationLogic.isEffortObligation(formData)) {
-                classification = '非特定臨床研究（努力義務研究）';
-                classificationEng = 'doryoku';
-                badge = '非特定臨床研究';
-                explanation = '公的資金のみを用いた承認済み医薬品の介入研究がこれに該当します。';
-                docs = requiredDocuments.doryoku;
-                procs = procedures.doryoku;
-            } else if (classificationLogic.isObservationWithIntervention(formData)) {
-                classification = '人指針下の観察研究（侵襲あり）';
-                classificationEng = 'observation_intervention';
-                badge = '観察研究（侵襲あり）';
-                explanation = '医薬品等を使わない研究でも、侵襲を伴う場合は対象となります。';
-                docs = requiredDocuments.observation_intervention;
-                procs = procedures.observation_intervention;
-            } else if (classificationLogic.isSimpleObservation(formData)) {
-                classification = '人指針下の観察研究（侵襲なし）';
-                classificationEng = 'simple_observation';
-                badge = '観察研究（侵襲なし）';
-                explanation = '介入を伴わない観察研究です。既存データの利用やアンケート調査が主な対象です。';
-                docs = requiredDocuments.simple_observation;
-                procs = procedures.simple_observation;
-            }
-
-            displayResults(formData, classification, classificationEng, badge, explanation, docs, procs);
-            generateReport(formData, classification, classificationEng, docs, procs);
-
-            document.getElementById('resultsCard').classList.remove('hidden');
-            document.getElementById('reportSection').classList.remove('hidden');
-            setTimeout(() => {
-                document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        });
-
-        function displayResults(formData, classification, classificationEng, badge, explanation, docs, procs) {
-            const resultsContent = document.getElementById('resultsContent');
-
-            let badgeClass = 'badge-tokutei';
-            if (classificationEng === 'doryoku') badgeClass = 'badge-doryoku';
-            else if (classificationEng === 'observation_intervention' || classificationEng === 'simple_observation') badgeClass = 'badge-kansatsu';
-
-            let html = `
-                <div class="result-header">
-                    <div class="result-icon">📌</div>
-                    <div class="result-text">
-                        <h2>判定結果</h2>
-                        <span class="classification-badge ${badgeClass}">${badge}</span>
-                    </div>
-                </div>
-
-                <div class="result-details">
-                    <h3>区分の説明</h3>
-                    <p>${explanation}</p>
-                </div>
-
-                <div class="info-box">
-                    <p><strong>重要：</strong> この判定は一般的なガイダンスです。最終的な分類は、所属機関の臨床研究審査委員会が行う正式な審査に従ってください。</p>
-                </div>
-            `;
-
-            if (docs.length > 0) {
-                html += `<div class="documents-section">
-                    <h3 style="cursor: pointer; color: #0066cc; text-decoration: underline;" 
-                    onclick="window.open('https://www.scchr.jp/clinicaltrial/organization/office_management/procedures.html', '_blank')">
-                    必要な書類 (${docs.length}点)</h3>
-                    <div class="document-list">`;
-                
-                docs.forEach((doc, index) => {
-                    html += `
-                        <div class="document-item">
-                            <div class="document-number">${index + 1}</div>
-                            <div class="document-content">
-                                <strong>${escapeHtml(doc.name)}</strong>
-                                <p>${escapeHtml(doc.detail)}</p>
-                            </div>
-                        </div>
-                    `;
-                });
-                
-                html += `</div></div>`;
-            }
-
-            if (procs.length > 0) {
-                html += `
-                    <div class="procedure-section">
-                        <h3>🔧 実施手順（${procs.length}ステップ）</h3>
-                        <div class="procedure-steps">
-                `;
-
-                procs.forEach((proc, index) => {
-                    html += `
-                        <div class="step">
-                            <div class="step-number">${index + 1}</div>
-                            <div class="step-content">
-                                <strong>${escapeHtml(proc.step)}</strong>
-                                <p>${escapeHtml(proc.detail)}</p>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                html += `
-                        </div>
-                    </div>
-                `;
-            }
-
-            resultsContent.innerHTML = html;
+        if (procs && procs.length > 0) {
+            html += `<div class="procedure-section">
+                <h3>🔖 手続きの流れ（${procs.length}ステップ）</h3>
+                <div class="procedure-steps">`;
+            procs.forEach((proc, index) => {
+                html += `<div class="step">
+                    <div class="step-number">${index + 1}</div>
+                    <div class="step-content"><strong>${escapeHtml(proc.step)}</strong><p>${escapeHtml(proc.detail)}</p></div>
+                </div>`;
+            });
+            html += `</div></div>`;
         }
 
-        function generateReport(formData, classification, classificationEng, docs, procs) {
-            const now = new Date();
-            const dateStr = now.toLocaleDateString('ja-JP') + ' ' + now.toLocaleTimeString('ja-JP');
+        resultsContent.innerHTML = html;
+    }
 
-            let report = `========================================
-臨床研究法分類判定レポート
-========================================
+    // ===== レポート生成 =====
+    function generateReport(formData, classification, classificationEng, docs, procs) {
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('ja-JP') + ' ' + now.toLocaleTimeString('ja-JP');
+        let report = `=======================================
+臨床研究相談レポート
+生成日時：${dateStr}
+=======================================
 
-【実行日時】
-${dateStr}
-
-【分類結果】
-${classification}
+【研究立案者】
+所属：${formData.affiliation || '（未入力）'}
+氏名：${formData.name || '（未入力）'}
 
 【研究タイトル】
 ${formData.title}
@@ -1584,108 +950,146 @@ ${formData.title}
 【研究目的】
 ${formData.objective}
 
-【研究特性】
-介入の有無: ${formData.intervention === 'yes' ? '介入あり' : '介入なし'}
-未承認・適応外医薬品等: ${formData.unapproved === 'yes' ? 'はい' : 'いいえ'}
-企業資金: ${formData.funding === 'yes' ? 'はい' : 'いいえ'}
-治験: ${formData.clinicalTrial === 'yes' ? 'はい' : 'いいえ'}
-侵襲程度: ${formData.invasiveness === 'none' ? '侵襲なし' : (formData.invasiveness === 'minor' ? '軽微な侵襲' : '侵襲あり')}
-予定参加者数: ${formData.participantNumber}名
-多施設共同研究: ${formData.multicenter === 'yes' ? 'はい' : 'いいえ'}
+【判定結果】
+分類：${classification}
 
-【必要な書類】
-`;
+【回答内容】
+・介入の有無：${formData.intervention === 'yes' ? 'あり' : 'なし'}
+・未承認薬等の使用：${formData.unapproved === 'yes' ? 'あり' : formData.unapproved === 'no' ? 'なし' : '該当しない'}
+・企業資金提供：${formData.funding === 'yes' ? 'あり' : 'なし'}
+・治験該当：${formData.clinicalTrial === 'yes' ? 'はい' : 'いいえ'}
+・侵襲度：${formData.invasiveness === 'none' ? '侵襲なし' : formData.invasiveness === 'minor' ? '軽微な侵襲' : '侵襲あり'}
+・予定参加者数：${formData.participantNumber}人
+・多施設共同：${formData.multicenter === 'yes' ? 'はい' : 'いいえ'}`;
 
-            if (docs.length > 0) {
-                docs.forEach((doc, index) => {
-                    report += `${index + 1}. ${doc.name}\n   (${doc.detail})\n`;
-                });
-            } else {
-                report += '特別な書類提出は不要です。\n';
-            }
-
-            report += `
-【実施手順】
-`;
-
-            if (procs.length > 0) {
-                procs.forEach((proc, index) => {
-                    report += `ステップ${index + 1}: ${proc.step}\n  ${proc.detail}\n`;
-                });
-            }
-
-            report += `
-========================================
-【重要な連絡先・相談先】
-========================================
-
-所属機関の臨床研究审查委员会(CRB):
-  - 特定臨床研究に関する相談
-  - 非特定臨床研究（努力義務）に関する相談
-
-所属機関の倫理委員会(IRB):
-  - 人指針下の研究に関する相談
-
-所属機関の利益相反(COI)委員会:
-  - 利益相反管理に関する相談
-
-========================================
-【参考資料】
-
-・臨床研究法
-  https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000163417.html
-
-・厚生労働省臨床研究法情報
-  https://jcrb.mhlw.go.jp/
-
-・jRCT（臨床研究等提出・公開システム）
-  https://jrct.mhlw.go.jp/
-
-・人を対象とする生命科学・医学系研究に関する倫理指針
-  https://www.mext.go.jp/a_menu/lifescience/bioethics/seimeikagaku_igaku.html
-
-・静岡がんセンターの標準業務手順書
-　https://www.scchr.jp/clinicaltrial/organization/office_management/procedures.html
-
-========================================
-※本レポートは自動生成されたものです。
-最終的な判断は所属機関の正式な審査に
-従ってください。
-========================================`;
-
-            document.getElementById('reportOutput').textContent = report;
+        if (formData.additionalInfo) {
+            report += `\n・補足情報：${formData.additionalInfo}`;
         }
 
-        function escapeHtml(text) {
-            const map = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#039;'
-            };
-            return text.replace(/[&<>"']/g, m => map[m]);
+        if (docs && docs.length > 0) {
+            report += `\n\n【必要書類】`;
+            docs.forEach((doc, index) => { report += `\n${index + 1}. ${doc.name}\n   ${doc.detail}`; });
         }
 
-        function exportReport(format) {
-            const report = document.getElementById('reportOutput').textContent;
-            const element = document.createElement('a');
+        if (procs && procs.length > 0) {
+            report += `\n\n【手続きの流れ】`;
+            procs.forEach((proc, index) => { report += `\n${index + 1}. ${proc.step}\n   ${proc.detail}`; });
+        }
+
+        report += `\n\n=======================================
+【参考リンク】
+・CRB：https://www.scchr.jp/
+・jRCT：https://jrct.mhlw.go.jp/
+・厚生労働省 臨床研究法：https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000163417.html
+・標準業務手順書：https://www.scchr.jp/clinicaltrial/organizationoffice/managementprocedures.html
+=======================================`;
+
+        document.getElementById('reportOutput').textContent = report;
+    }
+
+    // ===== ユーティリティ =====
+    function escapeHtml(text) {
+        const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+        return text.replace(/[&<>"']/g, m => map[m]);
+    }
+
+    function exportReport(format) {
+        const report = document.getElementById('reportOutput').textContent;
+        const element = document.createElement('a');
+        const dateStr = new Date().toLocaleDateString('ja-JP').replace(/\//g, '-');
+        if (format === 'csv') {
+            const csvRows = report.split('\n').map(line => '"' + line.replace(/"/g, '""') + '"');
+            const csvContent = '\uFEFF' + csvRows.join('\n');
+            const file = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+            element.href = URL.createObjectURL(file);
+            element.download = `臨床研究相談レポート_${dateStr}.csv`;
+        } else {
             const file = new Blob([report], { type: 'text/plain;charset=utf-8' });
             element.href = URL.createObjectURL(file);
-            element.download = '臨床研究法判定レポート_' + new Date().toLocaleDateString('ja-JP').replace(/\//g, '') + '.txt';
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
+            element.download = `臨床研究相談レポート_${dateStr}.txt`;
         }
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
 
-        function copyReport() {
-            const report = document.getElementById('reportOutput').textContent;
-            navigator.clipboard.writeText(report).then(() => {
-                alert('レポートをクリップボードにコピーしました');
-            }).catch(err => {
-                alert('コピーに失敗しました: ' + err);
-            });
-        }
-    </script>
+    function copyReport() {
+        const report = document.getElementById('reportOutput').textContent;
+        navigator.clipboard.writeText(report).then(() => alert('クリップボードにコピーしました')).catch(err => alert('コピーに失敗しました: ' + err));
+    }
+
+    // ===== メール送信機能 =====
+    const FIXED_TO_EMAIL = 'ns.morizo@gmail.com';
+
+    function buildSubject() {
+        const affil = (document.getElementById('researcherAffiliation').value || '').trim();
+        const name  = (document.getElementById('researcherName').value || '').trim();
+        let subject = '臨床研究相談レポート';
+        const parts = [affil, name].filter(Boolean);
+        if (parts.length > 0) subject += '【' + parts.join('　') + '】';
+        return subject;
+    }
+
+    function formatDateJP(dateStr) {
+        if (!dateStr) return '未選択';
+        const d = new Date(dateStr);
+        return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
+    }
+
+    function buildConsultSection() {
+        const lines = ['\n\n【相談希望日時】'];
+        const labels = ['第１希望', '第２希望', '第３希望'];
+        [1, 2, 3].forEach(i => {
+            const date = document.getElementById('date' + i).value;
+            const time = document.getElementById('time' + i).value;
+            lines.push(labels[i - 1] + '：' + (date ? formatDateJP(date) : '未入力') + '　' + (time || '--'));
+        });
+        return lines.join('\n');
+    }
+
+    function openMailModal() {
+        const report = document.getElementById('reportOutput').textContent;
+        if (!report || report.trim() === '') { alert('先に判定を実行してレポートを生成してください。'); return; }
+        const subject = buildSubject();
+        document.getElementById('modalSubject').value = subject;
+        document.getElementById('modalSubjectPreview').textContent = '件名プレビュー: ' + subject;
+        const today = new Date().toISOString().split('T')[0];
+        ['date1', 'date2', 'date3'].forEach(id => { document.getElementById(id).min = today; });
+        document.getElementById('mailModal').classList.add('open');
+    }
+
+    function closeMailModal() {
+        document.getElementById('mailModal').classList.remove('open');
+    }
+
+    function sendReportByMail() {
+        const subject = document.getElementById('modalSubject').value.trim() || '臨床研究相談レポート';
+        const body    = document.getElementById('reportOutput').textContent + buildConsultSection();
+        window.location.href = 'mailto:' + encodeURIComponent(FIXED_TO_EMAIL)
+            + '?subject=' + encodeURIComponent(subject)
+            + '&body='    + encodeURIComponent(body);
+        closeMailModal();
+        const toast = document.getElementById('mailToast');
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 4000);
+    }
+
+    ['researcherAffiliation', 'researcherName'].forEach(id => {
+        document.getElementById(id).addEventListener('input', function() {
+            const s = buildSubject();
+            const subjectEl = document.getElementById('modalSubject');
+            if (subjectEl) {
+                subjectEl.value = s;
+                document.getElementById('modalSubjectPreview').textContent = '件名プレビュー: ' + s;
+            }
+        });
+    });
+
+    document.getElementById('mailModal').addEventListener('click', function(e) {
+        if (e.target === this) closeMailModal();
+    });
+
+</script>
 </body>
 </html>
+
